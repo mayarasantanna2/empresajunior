@@ -140,6 +140,13 @@ a:focus {
 
 .header_section {
   padding: 15px 0;
+  position: fixed;   
+  top: 0;           
+  left: 0;
+  width: 100%;      
+  z-index: 999;     
+  background-color: #3633ff; 
+  transition: background-color 0.3s; 
 }
 
 .header_section .container-fluid {
@@ -150,7 +157,9 @@ a:focus {
 .navbar-brand {
   font-family: 'Dancing Script', cursive;
 }
-
+html{
+    scroll-behavior: smooth;
+}
 .navbar-brand span {
   font-weight: bold;
   font-size: 32px;
@@ -325,20 +334,27 @@ a:focus {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   position: relative;
   padding: 45px 0 75px 0;
+  justify-content: center;
+   align-items: center;     /* centraliza verticalmente */
+  height: 100vh; 
 }
+
 
 .slider_section .row {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
 }
 
 .slider_section #customCarousel1 {
@@ -347,8 +363,9 @@ a:focus {
 }
 
 .slider_section .detail-box {
-  color: #ffffff;
-  margin-bottom: 145px;
+ color: #ffffff;
+  margin: 0 auto 145px auto; 
+  text-align: center;        
 }
 
 .slider_section .detail-box h1 {
@@ -364,7 +381,7 @@ a:focus {
 .slider_section .detail-box a {
   display: inline-block;
   padding: 10px 45px;
-  background-color: #ffbe33;
+  background-color: #3633ff;
   color: #ffffff;
   border-radius: 45px;
   -webkit-transition: all 0.3s;
@@ -374,7 +391,7 @@ a:focus {
 }
 
 .slider_section .detail-box a:hover {
-  background-color: #e69c00;
+  background-color: #7cb2ff;
 }
 
 .slider_section .img-box img {
@@ -612,7 +629,7 @@ a:focus {
 .food_section .btn-box a {
   display: inline-block;
   padding: 10px 55px;
-  background-color: #ffbe33;
+  background-color: #3633ff;
   color: #ffffff;
   border-radius: 45px;
   -webkit-transition: all 0.3s;
@@ -621,7 +638,7 @@ a:focus {
 }
 
 .food_section .btn-box a:hover {
-  background-color: #e69c00;
+  background-color:  #7cb2ff;
 }
 
 .about_section {
