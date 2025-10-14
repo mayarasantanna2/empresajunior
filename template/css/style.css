@@ -239,7 +239,17 @@ a:focus {
 .user_option .order_online {
   display: inline-block;
   padding: 8px 30px;
-  background-color: #ffbe33;
+  background-color: #3633ff;
+  color: #ffffff;
+  border-radius: 45px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: none;
+}
+.order_online2{
+   display: inline-block;
+  padding: 8px 30px;
+ 
   color: #ffffff;
   border-radius: 45px;
   -webkit-transition: all 0.3s;
@@ -248,7 +258,7 @@ a:focus {
 }
 
 .user_option .order_online:hover {
-  background-color: #e69c00;
+  background-color: #7cb2ff;
 }
 
 .custom_nav-container .navbar-toggler {
