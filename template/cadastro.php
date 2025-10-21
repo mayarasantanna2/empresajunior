@@ -19,7 +19,7 @@
 </head>
 
 <body>
-  <!-- header -->
+  <!-- header (mantive estilo parecido ao seu projeto) -->
   <header class="header_section">
     <div class="container">
       <nav class="navbar navbar-expand-lg custom_nav-container">
@@ -56,7 +56,7 @@
   <br>
   <br>
   <!-- main login content -->
-  <section class="layout_padding-top" style="padding-top:120px;">
+  <section class="layout_padding-top" style="padding-top:120px;"> <!-- espaçamento para header fixo -->
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-7 col-lg-5">
@@ -85,19 +85,14 @@
                 </div>
 
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <a href="recuperar-senha.html">Esqueci a senha</a>
+                  <a href="recuperar-senha.html">Login para empresas</a>
                   <a href="registro.html">Criar conta</a>
                 </div>
 
                 <div class="text-center">
-                  <button id="modalOkBtn" type="submit" class="btn btn-primary btn-block">Entrar</button>
+                  <button id="modalOkBtn"  type="submit" class="btn btn-primary btn-block">Entrar</button>
                 </div>
               </form>
-
-              <hr>
-
-              <p class="text-center text-muted small mb-0">Login para empresas? <a href="loginempresa.php">Clique Aqui</a>
-              </p>
 
             </div>
           </div>
@@ -106,28 +101,28 @@
     </div>
   </section>
 
-  <!-- modal de erro -->
-  <div class="modal fade" id="loginErrorModal" tabindex="-1" role="dialog" aria-labelledby="loginErrorModalLabel"
+  <!-- modal de confirmação (aparece ao enviar com sucesso) -->
+  <div class="modal fade" id="loginSuccessModal" tabindex="-1" role="dialog" aria-labelledby="loginSuccessModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header bg-danger text-white">
-          <h5 class="modal-title">Erro no login</h5>
-          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Fechar">
+        <div class="modal-header">
+          <h5 class="modal-title">Login realizado</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          Email ou senha incorretos. Tente novamente.
+        <div class="modal-body"> <!-- colocar nome -->
+          Bem-vindo(a) à Freetecs! Você será redirecionado para a sua página página após confirmar. 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" id="modalOkBtn" class="btn btn-primary" data-dismiss="modal">OK</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- footer -->
+  <!-- footer (abreviado, igual ao seu) -->
   <footer class="footer_section mt-5">
     <div class="container">
       <div class="row">
@@ -135,9 +130,8 @@
           <div class="footer_contact">
             <h4>Contato</h4>
             <div class="contact_link_box">
-              <a href="tel:+5511940028922"><i class="fa fa-phone"></i><span>+55 (11)94002-8922</span></a>
-              <a href="mailto:suporte_freetecs@gmail.com"><i
-                  class="fa fa-envelope"></i><span>suporte_freetecs@gmail.com</span></a>
+              <a href="tel:+5511940028922"><i class="fa fa-phone"></i><span>+55 (11) 94002-8922</span></a>
+              <a href="mailto:suporte_freetecs@gmail.com"><i class="fa fa-envelope"></i><span>suporte_freetecs@gmail.com</span></a>
             </div>
           </div>
         </div>
@@ -155,12 +149,11 @@
   <!-- scripts -->
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="js/bootstrap.js"></script>
 
   <script>
-    // validação e exibição do modal
+    // Validação simples com Bootstrap styles + exibição do modal
     (function () {
       const form = document.getElementById('loginForm');
 
@@ -173,34 +166,22 @@
           form.classList.add('was-validated');
           return;
         }
-      });
-    });
 
-    // validação geral e login falso
-    (function () {
-      const form = document.getElementById('loginForm');
+        // Aqui você colocaria a chamada AJAX para o backend (autenticação).
+        // Como exemplo, simulamos sucesso imediato:
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
+        // abre o modal de sucesso
+        $('#loginSuccessModal').modal('show');
 
-        if (!form.checkValidity()) {
-          form.classList.add('was-validated');
-          return;
-        }
+        // ao clicar em OK no modal, redireciona p/ início (conforme pedido)
+        document.getElementById('modalOkBtn').addEventListener('click', function () {
+          window.location.href = 'cadastro.html';
+        });
 
-        const email = document.getElementById('email').value;
-        const senha = document.getElementById('password').value;
-
-        // falso
-        const emailCorreto = "teste@gmail.com";
-        const senhaCorreta = "123456";
-
-        if (email === emailCorreto && senha === senhaCorreta) {
-          window.location.href = "aluno.php";
-        } else {
-          $('#loginErrorModal').modal('show');
-        }
+        // como alternativa: se o usuário fechar o modal via X, também redireciona
+        $('#loginSuccessModal').on('hidden.bs.modal', function () {
+          window.location.href = 'cadastro.html';
+        });
       });
     })();
   </script>
