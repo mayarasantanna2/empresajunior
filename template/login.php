@@ -37,16 +37,22 @@
             <li class="nav-item">
               <a class="nav-link" href="index.html">Início</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#sobre">Sobre</a>
-            </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="contato.html">Contato</a>
             </li>
           </ul>
 
-          <div class="user_option">
-            <a href="registro.html" class="order_online">Cadastrar</a>
+           <div class="user_option">
+            <div class="dropdown">
+              <a class="order_online dropdown-toggle" href="#" id="dropdownCadastro" data-toggle="dropdown">
+                Cadastrar
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="cadastro.html">Aluno</a>
+                <a class="dropdown-item" href="cadastroempresa.html">Empresa</a>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
