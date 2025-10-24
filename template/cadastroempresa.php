@@ -54,21 +54,19 @@
         <div class="col-md-7 col-lg-5">
           <div class="card shadow-sm">
             <div class="card-body">
-              <h3 class="card-title text-center mb-3">Cadastre-Se
-              </h3>
+              <h3 class="card-title text-center mb-3">Cadastre sua empresa</h3>
               <p class="text-center text-muted mb-4">Preencha os dados abaixo para criar sua conta na Freetecs</p>
 
               <form id="cadastroForm" novalidate>
-               
+
                 <div class="form-group">
-                  <label for="nome">Nome Completo</label>
+                  <label for="nome">Nome da Empresa</label>
                   <input type="text" class="form-control" id="nome" placeholder="Nome da empresa" required>
                   <div class="invalid-feedback">
-                    Por favor, digite seu nome.
+                    Por favor, digite o nome da empresa.
                   </div>
                 </div>
 
-          
                 <div class="form-group">
                   <label for="cnpj">CNPJ</label>
                   <input type="text" class="form-control" id="cnpj" placeholder="00.000.000/0000-00" required>
@@ -77,7 +75,6 @@
                   </div>
                 </div>
 
-              
                 <div class="form-group">
                   <label for="email">Email</label>
                   <input type="email" class="form-control" id="email" placeholder="email@empresa.com" required>
@@ -86,7 +83,39 @@
                   </div>
                 </div>
 
-              
+                <div class="form-group">
+                  <label for="telefone">Telefone</label>
+                  <input type="tel" class="form-control" id="telefone" placeholder="(00)00000-0000" required>
+                  <div class="invalid-feedback">
+                    Digite o número de telefone.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="area">Área de Atuação</label>
+                  <input type="text" class="form-control" id="atuacao" placeholder="Ex: Saúde, Educação, Tecnologia..." required>
+                  <div class="invalid-feedback">
+                    Digite a área de atuação da empresa.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="descricao">Descrição Institucional</label>
+                  <input type="text" class="form-control" id="descricao"
+                    placeholder="Descrição Institucional da empresa." required>
+                  <div class="invalid-feedback">
+                    Digite a descrição Institucional da empresa.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="ano">Ano de Fundação</label>
+                  <input type="number" class="form-control" id="ano" placeholder="Ex: 2020" required>
+                  <div class="invalid-feedback">
+                    O ano deve ter 4 dígitos.
+                  </div>
+                </div>
+
                 <div class="form-group">
                   <label for="password">Senha</label>
                   <input type="password" class="form-control" id="password" placeholder="Senha" minlength="6" required>
@@ -95,11 +124,9 @@
                   </div>
                 </div>
 
-               
                 <div class="form-group">
                   <label for="confirmPassword">Confirmar Senha</label>
-                  <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme a senha"
-                    minlength="6" required>
+                  <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme a senha" minlength="6" required>
                   <div class="invalid-feedback">
                     As senhas não coincidem.
                   </div>
@@ -108,6 +135,7 @@
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
                 </div>
+
               </form>
 
             </div>
@@ -118,8 +146,8 @@
   </section>
 
   <!-- modal de sucesso -->
-  <div class="modal fade" id="cadastroSucessoModal" tabindex="-1" role="dialog" aria-labelledby="cadastroSucessoModalLabel"
-    aria-hidden="true">
+  <div class="modal fade" id="cadastroSucessoModal" tabindex="-1" role="dialog"
+    aria-labelledby="cadastroSucessoModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
@@ -129,7 +157,7 @@
           </button>
         </div>
         <div class="modal-body">
-          Sua empresa foi cadastrada com sucesso!. Realize login para acessar a sua página.
+          Sua empresa foi cadastrada com sucesso! Realize login para acessar a sua página.
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" data-dismiss="modal">Fechar</button>
@@ -168,6 +196,20 @@
   <script src="js/bootstrap.js"></script>
 
   <script>
+    const telefone = document.getElementById('telefone');
+
+    telefone.addEventListener('input', function (e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length > 11) value = value.slice(0, 11);
+      let formatted = value;
+
+      if (value.length > 0) formatted = '(' + value.substring(0, 2);
+      if (value.length >= 3) formatted += ') ' + value.substring(2, 7);
+      if (value.length >= 8) formatted += '-' + value.substring(7, 11);
+
+      e.target.value = formatted;
+    });
+
     // Máscara e validação CNPJ
     document.addEventListener("DOMContentLoaded", () => {
       const cnpjInput = document.getElementById('cnpj');
@@ -180,7 +222,6 @@
         v = v.replace(/(\d{4})(\d)/, '$1-$2');
         e.target.value = v.substring(0, 18);
 
-        // valida se tem 14 números
         const apenasNumeros = e.target.value.replace(/\D/g, '');
         if (apenasNumeros.length < 14) {
           cnpjInput.setCustomValidity('CNPJ inválido');
@@ -200,6 +241,14 @@
 
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
+        const ano = document.getElementById('ano');
+
+        // valida ano com 4 dígitos
+        if (!/^\d{4}$/.test(ano.value)) {
+          ano.setCustomValidity('Ano inválido');
+        } else {
+          ano.setCustomValidity('');
+        }
 
         if (password !== confirmPassword) {
           document.getElementById('confirmPassword').setCustomValidity('Senhas não coincidem');
@@ -212,10 +261,8 @@
           return;
         }
 
-        // Exibe o modal de sucesso
         $('#cadastroSucessoModal').modal('show');
 
-        // Limpa o formulário após fechar o modal
         $('#cadastroSucessoModal').on('hidden.bs.modal', function () {
           form.reset();
           form.classList.remove('was-validated');
@@ -225,4 +272,5 @@
   </script>
 
 </body>
+
 </html>
