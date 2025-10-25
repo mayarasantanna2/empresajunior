@@ -484,8 +484,8 @@ a:focus {
       border-radius: 25px;
 
       &.active {
-        background-color: $primary2;
-        color: $white;
+        background-color: #3633ff;
+        color: white;
       }
     }
   }
@@ -541,7 +541,7 @@ a:focus {
         width: 40px;
         height: 40px;
         border-radius: 100%;
-        background: $primary1;
+        background-color: 3633ff;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -569,7 +569,7 @@ a:focus {
     margin-top: 45px;
 
     a {
-      @include hero_btn($primary1, $white, 10px, 55px, 45px);
+      @include hero_btn( #3633ff, $white, 10px, 55px, 45px);
     }
   }
 }
@@ -605,7 +605,7 @@ a:focus {
     }
 
     a {
-      @include hero_btn($primary1, $white, 10px, 45px, 45px);
+      @include hero_btn( #3633ff, $white, 10px, 45px, 45px);
       margin-top: 15px;
     }
   }
@@ -652,7 +652,7 @@ a:focus {
       margin-top: 15px;
       border: none;
       text-transform: uppercase;
-      @include hero_btn($primary1, $white, 10px, 55px, 45px);
+      @include hero_btn( #3633ff, $white, 10px, 55px, 45px);
     }
   }
 

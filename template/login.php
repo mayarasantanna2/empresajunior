@@ -203,7 +203,7 @@
         const senhaCorreta = "123456";
 
         if (email === emailCorreto && senha === senhaCorreta) {
-          window.location.href = "aluno.php";
+          window.location.href = "restritaaluno.php";
         } else {
           $('#loginErrorModal').modal('show');
         }

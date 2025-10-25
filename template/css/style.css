@@ -35,11 +35,23 @@ body {
 body {
   font-family: "Quicksand", sans-serif;
 }
+a svg {
+  fill: #000 !important; /* preto */
+  width: 24px;
+  height: 24px;
+}
+
+a:hover svg {
+  fill: #dc3545 !important; /* muda de cor ao passar o mouse (vermelho) */
+}
 
 h1,
 h2,
 h3 {
-  font-family: "Quicksand", sans-serif;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+
+  font-style: normal;
 
 }
 
@@ -94,7 +106,7 @@ h3 {
 }
 
 .heading_container h2 span {
-  color: #ffbe33;
+  color: #3633ff;
 }
 
 .heading_container p {
@@ -411,12 +423,14 @@ html {
   color: #ffffff;
   margin: 0 auto 145px auto;
   text-align: center;
+  background-color: #3633ff;
 }
 
 .slider_section .detail-box h1 {
   font-size: 3.5rem;
   font-weight: bold;
   margin-bottom: 15px;
+    background-color: #3633ff;
 }
 
 .slider_section .detail-box p {
@@ -534,7 +548,7 @@ html {
 }
 
 .offer_section .box .detail-box a:hover {
-  background-color: #e69c00;
+  background-color: #3633ff;
 }
 
 .offer_section .box .detail-box a svg {
@@ -542,6 +556,7 @@ html {
   height: auto;
   margin-left: 5px;
   fill: #ffffff;
+  background-color: #3633ff;
 }
 
 .offer_section .box:hover .img-box img {
@@ -632,13 +647,14 @@ html {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  background-color: #3633ff;
 }
 
 .food_section .box .options a {
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  background: #ffbe33;
+color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -648,12 +664,16 @@ html {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  background-color: #3633ff;
+
 }
+
 
 .food_section .box .options a svg {
   width: 18px;
   height: auto;
-  fill: #ffffff;
+  
+  background-color: #3633ff;
 }
 
 .food_section .box:hover .img-box img {
@@ -731,7 +751,7 @@ html {
 }
 
 .about_section .detail-box a:hover {
-  background-color: #e69c00;
+  background-color: #3633ff;
 }
 
 .book_section {
@@ -859,7 +879,7 @@ html {
 }
 
 .client_section .box .detail-box {
-  background-color: #010054;
+  background-color: #ffffff;
   color: #ffffff;
   padding: 25px 25px 15px 25px;
   border-radius: 5px;
