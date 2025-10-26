@@ -12,7 +12,12 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
   <link rel="shortcut icon" href="images/favicon.png" type="">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css
+">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js
+">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js
+">
   <title> Freetecs </title>
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet" />
@@ -28,6 +33,10 @@
     crossorigin="anonymous" />
   <!-- font awesome style -->
   <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <!-- CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 
   <!-- responsive style -->
@@ -58,7 +67,7 @@
               <a class="nav-link" href="index.html">Início </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Seu Perfil</a>
+              <a class="nav-link" href="perfilaluno.php">Seu Perfil</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contato.html">Contato</a>
@@ -78,7 +87,6 @@
     <br>
     <br>
     <br>
- 
     <br>
     <br>
     <br>
@@ -88,7 +96,7 @@
           Projetos Disponíveis
         </h2>
       </div>
-<br>
+      <br>
       <div class="container">
         <div class="filters-content">
           <div class="row grid">
@@ -100,34 +108,49 @@
                     <img src="images/prancheta.png" alt="">
                   </div>
                   <div class="detail-box">
-                    <h5>
-                      projeto 1
-                    </h5>
+                    <h5>projeto 1</h5>
                     <p>
                       Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      repellendus
-                      sed eaque
+                      repellendus sed eaque
                     </p>
                     <div class="options">
-                      <h6>
-                        empresa 1
-                      </h6>
-                       <a href="">
-                      <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                        style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                        <g>
-                          <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-    c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                        </g>
-                      </svg>
-
-                    </a>
+                      <h6>empresa 1</h6>
+                      <!-- Botão que abre o modal -->
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
+                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
+                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
+                          <g>
+                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
+                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
+                          </g>
+                        </svg>
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+
+            <div class="modal fade" id="modalProjeto1" tabindex="-1" aria-labelledby="modalProjeto1Label"
+              aria-hidden="true">
+              <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalProjeto1Label">Detalhes do Projeto 1</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Aqui você pode colocar todas as informações detalhadas do projeto 1.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
 
             <div class="col-sm-6 col-lg-4 all burger">
               <div class="box">
@@ -148,17 +171,16 @@
                       <h6>
                         empresa 2
                       </h6>
-                       <a href="">
-                      <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                        style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                        <g>
-                          <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-    c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                        </g>
-                      </svg>
-
-                    </a>
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
+                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
+                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
+                          <g>
+                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
+                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
+                          </g>
+                        </svg>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -184,17 +206,16 @@
                       <h6>
                         empresa 3
                       </h6>
-                      <a href="">
-                      <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                        style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                        <g>
-                          <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-    c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                        </g>
-                      </svg>
-
-                    </a>
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
+                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
+                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
+                          <g>
+                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
+                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
+                          </g>
+                        </svg>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -219,17 +240,16 @@
                       <h6>
                         empresa 4
                       </h6>
-                      <a href="">
-                      <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                        style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                        <g>
-                          <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-    c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                        </g>
-                      </svg>
-
-                    </a>
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
+                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
+                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
+                          <g>
+                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
+                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
+                          </g>
+                        </svg>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -254,17 +274,16 @@
                       <h6>
                         empresa 5
                       </h6>
-                      <a href="">
-                      <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                        style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                        <g>
-                          <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-    c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                        </g>
-                      </svg>
-
-                    </a>
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
+                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
+                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
+                          <g>
+                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
+                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
+                          </g>
+                        </svg>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -289,17 +308,16 @@
                       <h6>
                         empresa 6
                       </h6>
-                      <a href="">
-                      <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                        style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                        <g>
-                          <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-    c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                        </g>
-                      </svg>
-
-                    </a>
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
+                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
+                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
+                          <g>
+                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
+                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
+                          </g>
+                        </svg>
+                      </a>
                     </div>
                   </div>
                 </div>

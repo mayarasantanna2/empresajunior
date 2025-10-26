@@ -7,6 +7,36 @@ function getYear() {
 
 getYear();
 
+// Alterar foto de perfil
+const photoInput = document.getElementById('photoInput');
+const profilePhoto = document.getElementById('profilePhoto');
+
+photoInput.addEventListener('change', function() {
+  const file = this.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      profilePhoto.src = e.target.result;
+    }
+    reader.readAsDataURL(file);
+  }
+});
+
+// Salvar alterações
+const profileForm = document.getElementById('profileForm');
+const successMsg = document.getElementById('successMsg');
+
+profileForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  // Aqui você pode integrar com backend
+  successMsg.classList.remove('d-none');
+  setTimeout(() => successMsg.classList.add('d-none'), 3000);
+});
+
+// Logout
+document.getElementById('logoutBtn').addEventListener('click', function() {
+  window.location.href = 'index.html'; // Redireciona para página inicial
+});
 
 // isotope js
 $(window).on('load', function () {
