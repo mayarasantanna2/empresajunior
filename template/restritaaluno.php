@@ -59,6 +59,7 @@
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -80,10 +81,11 @@
   </header>
   <!-- end header section -->
 
-
   <!-- food section -->
 
-  <section class="food_section layout_padding-bottom">
+ como poe um css inline nesse ngc aq p ele ficar c o background #222831
+
+ <section class="food_section layout_padding-bottom">
     <br>
     <br>
     <br>
@@ -92,7 +94,7 @@
     <br>
     <div class="container">
       <div class="heading_container heading_center">
-        <h2>
+        <h2 class="titulo">
           Projetos Disponíveis
         </h2>
       </div>
@@ -105,7 +107,7 @@
               <div class="box">
                 <div>
                   <div class="img-box">
-                    <img src="images/prancheta.png" alt="">
+                    <img src="images/prancheta2.png" alt="">
                   </div>
                   <div class="detail-box">
                     <h5>projeto 1</h5>
@@ -156,11 +158,11 @@
               <div class="box">
                 <div>
                   <div class="img-box">
-                    <img src="images/prancheta.png" alt="">
+                    <img src="images/prancheta2.png" alt="">
                   </div>
                   <div class="detail-box">
                     <h5>
-                      projeto 2
+                      projeto 22
                     </h5>
                     <p>
                       Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
@@ -191,7 +193,7 @@
               <div class="box">
                 <div>
                   <div class="img-box">
-                    <img src="images/prancheta.png" alt="">
+                    <img src="images/prancheta2.png" alt="">
                   </div>
                   <div class="detail-box">
                     <h5>
@@ -225,7 +227,7 @@
               <div class="box">
                 <div>
                   <div class="img-box">
-                    <img src="images/prancheta.png" alt="">
+                    <img src="images/prancheta2.png" alt="">
                   </div>
                   <div class="detail-box">
                     <h5>
@@ -259,7 +261,7 @@
               <div class="box">
                 <div>
                   <div class="img-box">
-                    <img src="images/prancheta.png" alt="">
+                    <img src="images/prancheta2.png" alt="">
                   </div>
                   <div class="detail-box">
                     <h5>
@@ -293,7 +295,7 @@
               <div class="box">
                 <div>
                   <div class="img-box">
-                    <img src="images/prancheta.png" alt="">
+                    <img src="images/prancheta2.png" alt="">
                   </div>
                   <div class="detail-box">
                     <h5>
@@ -333,7 +335,6 @@
     </div>
     </div>
   </section>
-
   <!-- end food section -->
 
 

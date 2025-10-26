@@ -43,8 +43,8 @@
                 Cadastrar
               </a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="cadastro.html">Aluno</a>
-                <a class="dropdown-item" href="cadastroempresa.html">Empresa</a>
+                <a class="dropdown-item" href="cadastro.php">Aluno</a>
+                <a class="dropdown-item" href="cadastroempresa.php">Empresa</a>
               </div>
             </div>
           </div>
@@ -92,7 +92,7 @@
 
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <a href="recuperar-senha.html">Esqueci a senha</a>
-                  <a href="cadastro.html">Criar conta</a>
+                  <a href="cadastroempresa.php">Criar conta</a>
                 </div>
 
                 <div class="text-center">

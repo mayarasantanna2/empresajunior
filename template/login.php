@@ -102,7 +102,7 @@
 
               <hr>
 
-              <p class="text-center text-muted small mb-0">Login para empresas? <a href="loginempresa.php">Clique Aqui</a>
+              <p class="text-center text-muted small mb-0">Login para empresas? <a href="login.php">Clique Aqui</a>
               </p>
 
             </div>

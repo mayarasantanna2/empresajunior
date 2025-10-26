@@ -541,10 +541,11 @@ a:focus {
         width: 40px;
         height: 40px;
         border-radius: 100%;
-        background-color: 3633ff;
+        background-color: wheat;
         display: flex;
         justify-content: center;
         align-items: center;
+
 
         svg {
           width: 18px;
@@ -744,7 +745,7 @@ a:focus {
       .owl-next {
         width: 45px;
         height: 45px;
-        background-color: $primary1;
+        background-color: #f1f2f3;
         color: $white;
         outline: none;
         bottom: 0px;

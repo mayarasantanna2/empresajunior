@@ -1,50 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap');
+
 body {
-    background: rgb(99, 39, 120)
+  background: rgb(99, 39, 120)
 }
 
 .form-control:focus {
-    box-shadow: none;
-    border-color: #BA68C8
+  box-shadow: none;
+  border-color: #BA68C8
 }
-
+.tituloperfil{
+  font-size: 15px;
+}
 .profile-button {
-    background: rgb(99, 39, 120);
-    box-shadow: none;
-    border: none
+  background: rgb(99, 39, 120);
+  box-shadow: none;
+  border: none
 }
 
 .profile-button:hover {
-    background: #682773
+  background: #682773
 }
 
 .profile-button:focus {
-    background: #682773;
-    box-shadow: none
+  background: #682773;
+  box-shadow: none
 }
 
 .profile-button:active {
-    background: #682773;
-    box-shadow: none
+  background: #682773;
+  box-shadow: none
 }
 
 .back:hover {
-    color: #682773;
-    cursor: pointer
+  color: #682773;
+  cursor: pointer
 }
 
 .labels {
-    font-size: 11px
+  font-size: 11px
 }
 
 .add-experience:hover {
-    background: #BA68C8;
-    color: #fff;
-    cursor: pointer;
-    border: solid 1px #BA68C8
+  background: #BA68C8;
+  color: #fff;
+  cursor: pointer;
+  border: solid 1px #BA68C8
 }
+
 body {
   color: #0c0c0c;
   background-color: #ffffff;
@@ -66,6 +71,7 @@ body {
 .layout_padding2-bottom {
   padding-bottom: 75px;
 }
+
 .profile-photo {
   width: 120px;
   height: 120px;
@@ -81,30 +87,38 @@ body {
 .layout_padding-bottom {
   padding-bottom: 90px;
 }
+
 #modalProjeto1 {
   font-family: 'Raleway', sans-serif;
 }
+
 body {
   font-family: "Quicksand", sans-serif;
 }
+
 a svg {
-  fill: #000 !important; /* preto */
+  fill: white !important;
+  /* preto */
   width: 24px;
   height: 24px;
 }
 
 a:hover svg {
-  fill: #dc3545 !important; /* muda de cor ao passar o mouse (vermelho) */
-}
+  fill: #81cbf3 !important;
 
+}
+sr
 h1,
 h2,
 h3 {
-  font-family: "Raleway", sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-optical-sizing: auto;
-
   font-style: normal;
+  font-family: "Zalando Sans SemiExpanded", sans-serif;
+}
 
+.titulo {
+  font-family: "Raleway", sans-serif;
 }
 
 .efeito {
@@ -154,7 +168,6 @@ h3 {
   position: relative;
   margin-bottom: 0;
   font-size: 2.5rem;
-  font-weight: bold;
 }
 
 .heading_container h2 span {
@@ -475,14 +488,14 @@ html {
   color: #ffffff;
   margin: 0 auto 145px auto;
   text-align: center;
-  background-color: #3633ff;
+  background-color: transparent;
 }
 
 .slider_section .detail-box h1 {
   font-size: 3.5rem;
   font-weight: bold;
   margin-bottom: 15px;
-    background-color: #3633ff;
+  background-color: #3633ff;
 }
 
 .slider_section .detail-box p {
@@ -645,11 +658,11 @@ html {
   position: relative;
   margin-top: 25px;
   background-color: #ffffff;
-  border-radius: 10px;
-  color: #ffffff;
+  border: 1px solid #ccc;
   border-radius: 15px;
   overflow: hidden;
-  background: linear-gradient(to bottom, #f1f2f3 25px, #222831 25px);
+  background: linear-gradient(to bottom, #f1f2f3 25px, #ffffff 25px);
+  color: #000000;
 }
 
 .food_section .box .img-box {
@@ -684,6 +697,12 @@ html {
   font-weight: 600;
 }
 
+h5 {
+  text-align: center;
+  font-size: 30px;
+
+}
+
 .food_section .box .detail-box p {
   font-size: 15px;
 }
@@ -699,14 +718,15 @@ html {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  background-color: #3633ff;
+  background-color: tr;
+
 }
 
 .food_section .box .options a {
   width: 40px;
   height: 40px;
   border-radius: 100%;
-color: white;
+  color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -724,7 +744,8 @@ color: white;
 .food_section .box .options a svg {
   width: 18px;
   height: auto;
-  
+  display: flex;
+  justify-content: flex-end;
   background-color: #3633ff;
 }
 
