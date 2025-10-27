@@ -91,8 +91,8 @@
                 </div>
 
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <a href="recuperar-senha.html">Esqueci a senha</a>
-                  <a href="registro.html">Criar conta</a>
+                  <a href="#">Esqueci a senha</a>
+                  <a href="cadastro.php">Criar conta</a>
                 </div>
 
                 <div class="text-center">
@@ -102,7 +102,7 @@
 
               <hr>
 
-              <p class="text-center text-muted small mb-0">Login para empresas? <a href="login.php">Clique Aqui</a>
+              <p class="text-center text-muted small mb-0">Login para empresas? <a href="loginempresa.php">Clique Aqui</a>
               </p>
 
             </div>

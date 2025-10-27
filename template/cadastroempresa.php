@@ -93,7 +93,8 @@
 
                 <div class="form-group">
                   <label for="area">Área de Atuação</label>
-                  <input type="text" class="form-control" id="atuacao" placeholder="Ex: Saúde, Educação, Tecnologia..." required>
+                  <input type="text" class="form-control" id="atuacao" placeholder="Ex: Saúde, Educação, Tecnologia..."
+                    required>
                   <div class="invalid-feedback">
                     Digite a área de atuação da empresa.
                   </div>
@@ -126,7 +127,8 @@
 
                 <div class="form-group">
                   <label for="confirmPassword">Confirmar Senha</label>
-                  <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme a senha" minlength="6" required>
+                  <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme a senha"
+                    minlength="6" required>
                   <div class="invalid-feedback">
                     As senhas não coincidem.
                   </div>
@@ -135,9 +137,11 @@
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
                 </div>
-
               </form>
+              <hr>
 
+              <p class="text-center text-muted small mb-0">Cadastro para alunos? <a href="cadastro.php">Clique
+                  Aqui</a></p>
             </div>
           </div>
         </div>
@@ -175,7 +179,8 @@
             <h4>Contato</h4>
             <div class="contact_link_box">
               <a href="tel:+5511940028922"><i class="fa fa-phone"></i><span>+55 (11) 94002-8922</span></a>
-              <a href="mailto:suporte_freetecs@gmail.com"><i class="fa fa-envelope"></i><span>suporte_freetecs@gmail.com</span></a>
+              <a href="mailto:suporte_freetecs@gmail.com"><i
+                  class="fa fa-envelope"></i><span>suporte_freetecs@gmail.com</span></a>
             </div>
           </div>
         </div>

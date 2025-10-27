@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <a href="recuperar-senha.html">Esqueci a senha</a>
+                  <a href="#">Esqueci a senha</a>
                   <a href="cadastroempresa.php">Criar conta</a>
                 </div>
 
@@ -99,6 +99,11 @@
                   <button type="submit" class="btn btn-primary btn-block">Entrar</button>
                 </div>
               </form>
+              <hr>
+
+              <p class="text-center text-muted small mb-0">Login para alunos? <a href="login.php">Clique
+                  Aqui</a>
+              </p>
 
             </div>
           </div>
@@ -203,7 +208,7 @@
         const senhaCorreta = "123456";
 
         if (cnpj === cnpjCorreto && senha === senhaCorreta) {
-          window.location.href = "empresa.php";
+          window.location.href = "restritaempresa.php";
         } else {
           $('#loginErrorModal').modal('show');
         }

@@ -59,25 +59,15 @@
               <p class="text-center text-muted mb-4">Preencha os dados abaixo para criar sua conta na Freetecs</p>
 
               <form id="cadastroForm" novalidate>
-               
+
                 <div class="form-group">
                   <label for="nome">Nome Completo</label>
-                  <input type="text" class="form-control" id="nome" placeholder="Nome da empresa" required>
+                  <input type="text" class="form-control" id="nome" placeholder="Nome Completo" required>
                   <div class="invalid-feedback">
                     Por favor, digite seu nome.
                   </div>
                 </div>
 
-          
-                <div class="form-group">
-                  <label for="cnpj">CNPJ</label>
-                  <input type="text" class="form-control" id="cnpj" placeholder="00.000.000/0000-00" required>
-                  <div class="invalid-feedback">
-                    Digite um CNPJ válido com 14 números.
-                  </div>
-                </div>
-
-              
                 <div class="form-group">
                   <label for="email">Email</label>
                   <input type="email" class="form-control" id="email" placeholder="email@empresa.com" required>
@@ -86,7 +76,47 @@
                   </div>
                 </div>
 
-              
+                <div class="form-group">
+                  <label for="cpf">CPF</label>
+                  <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" required>
+                  <div class="invalid-feedback">
+                    Digite um CPF válido.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="datanasc">Data de Nascimento</label>
+                  <input type="date" class="form-control" id="datanasc" required>
+                  <div class="invalid-feedback">
+                    Idade Mínima de 15 anos.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="curso">Curso</label>
+                  <input type="text" class="form-control" id="curso" placeholder="Informática Para Internet" required>
+                  <div class="invalid-feedback">
+                    Digite seu curso.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="descricao">Descrição Pessoal</label>
+                  <input type="descricao" class="form-control" id="descricao" placeholder="Olá, meu nome é..." required>
+                  <div class="invalid-feedback">
+                    Digite sua Descrição Pessoal.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="habilidades">Habilidades e Competências</label>
+                  <input type="habilidades" class="form-control" id="habilidades"
+                    placeholder="Excel básico, PHP Intermediário..." required>
+                  <div class="invalid-feedback">
+                    Digite suas Habilidades e Competências.
+                  </div>
+                </div>
+
                 <div class="form-group">
                   <label for="password">Senha</label>
                   <input type="password" class="form-control" id="password" placeholder="Senha" minlength="6" required>
@@ -95,7 +125,7 @@
                   </div>
                 </div>
 
-               
+
                 <div class="form-group">
                   <label for="confirmPassword">Confirmar Senha</label>
                   <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme a senha"
@@ -109,6 +139,9 @@
                   <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
                 </div>
               </form>
+              <hr>
+
+              <p class="text-center text-muted small mb-0">Cadastro para empresas? <a href="cadastroempresa.php">Clique Aqui</a></p>
 
             </div>
           </div>
@@ -118,8 +151,8 @@
   </section>
 
   <!-- modal de sucesso -->
-  <div class="modal fade" id="cadastroSucessoModal" tabindex="-1" role="dialog" aria-labelledby="cadastroSucessoModalLabel"
-    aria-hidden="true">
+  <div class="modal fade" id="cadastroSucessoModal" tabindex="-1" role="dialog"
+    aria-labelledby="cadastroSucessoModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
@@ -129,7 +162,7 @@
           </button>
         </div>
         <div class="modal-body">
-          Sua empresa foi cadastrada com sucesso!. Realize login para acessar a sua página.
+          Seu cadastro foi realizado com sucesso!. Realize login para acessar a sua página.
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" data-dismiss="modal">Fechar</button>
@@ -147,7 +180,8 @@
             <h4>Contato</h4>
             <div class="contact_link_box">
               <a href="tel:+5511940028922"><i class="fa fa-phone"></i><span>+55 (11) 94002-8922</span></a>
-              <a href="mailto:suporte_freetecs@gmail.com"><i class="fa fa-envelope"></i><span>suporte_freetecs@gmail.com</span></a>
+              <a href="mailto:suporte_freetecs@gmail.com"><i
+                  class="fa fa-envelope"></i><span>suporte_freetecs@gmail.com</span></a>
             </div>
           </div>
         </div>
@@ -168,27 +202,58 @@
   <script src="js/bootstrap.js"></script>
 
   <script>
-    // Máscara e validação CNPJ
     document.addEventListener("DOMContentLoaded", () => {
-      const cnpjInput = document.getElementById('cnpj');
+      const nascimentoInput = document.getElementById('datanasc');
 
-      cnpjInput.addEventListener('input', function (e) {
-        let v = e.target.value.replace(/\D/g, '');
-        v = v.replace(/^(\d{2})(\d)/, '$1.$2');
-        v = v.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
-        v = v.replace(/\.(\d{3})(\d)/, '.$1/$2');
-        v = v.replace(/(\d{4})(\d)/, '$1-$2');
-        e.target.value = v.substring(0, 18);
+      nascimentoInput.addEventListener('change', function (e) {
+        const hoje = new Date();
+        const valor = new Date(e.target.value);
 
-        // valida se tem 14 números
-        const apenasNumeros = e.target.value.replace(/\D/g, '');
-        if (apenasNumeros.length < 14) {
-          cnpjInput.setCustomValidity('CNPJ inválido');
+        if (isNaN(valor)) {
+          nascimentoInput.setCustomValidity('Data inválida');
+          return;
+        }
+
+        // Calcula a idade
+        let idade = hoje.getFullYear() - valor.getFullYear();
+        const m = hoje.getMonth() - valor.getMonth();
+        if (m < 0 || (m === 0 && hoje.getDate() < valor.getDate())) {
+          idade--;
+        }
+
+        if (idade < 15) {
+          nascimentoInput.setCustomValidity('Você precisa ter pelo menos 15 anos');
         } else {
-          cnpjInput.setCustomValidity('');
+          nascimentoInput.setCustomValidity('');
         }
       });
     });
+
+
+    // Máscara e validação CPF
+    document.addEventListener("DOMContentLoaded", () => {
+      const cpfInput = document.getElementById('cpf');
+
+      cpfInput.addEventListener('input', function (e) {
+        let v = e.target.value.replace(/\D/g, ''); // remove tudo que não for número
+
+        // aplica a máscara: 000.000.000-00
+        v = v.replace(/(\d{3})(\d)/, '$1.$2');
+        v = v.replace(/(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+        v = v.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+
+        e.target.value = v.substring(0, 14);
+
+        // valida se tem 11 números
+        const apenasNumeros = v.replace(/\D/g, '');
+        if (apenasNumeros.length < 11) {
+          cpfInput.setCustomValidity('CPF inválido');
+        } else {
+          cpfInput.setCustomValidity('');
+        }
+      });
+    });
+
 
     // Validação geral do formulário
     (function () {
@@ -225,4 +290,5 @@
   </script>
 
 </body>
+
 </html>
