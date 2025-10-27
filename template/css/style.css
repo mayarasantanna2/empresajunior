@@ -6,6 +6,74 @@
 body {
   background: rgb(99, 39, 120)
 }
+.profile-header {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #e0e0e0;
+}
+.linha {
+  border: none;          
+  height: 2px;            
+  background-color: #a8a8a8; 
+  margin: 15px 0;         
+}
+
+
+.profile-header {
+  text-align: center;
+  padding: 40px 20px;
+  background: none; /* remove o fundo */
+  border: none; /* remove a borda inferior */
+}
+
+.profile-pic-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-pic {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #00ADB5; /* borda azul */
+}
+
+#profileUpload {
+  display: none;
+}
+
+.upload-icon {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: #00ADB5;
+  color: white;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  border: 2px solid white;
+  transition: background 0.3s;
+  font-size: 16px;
+}
+
+.upload-icon:hover {
+  background-color: #007d83;
+}
+
+.profile-name {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #222831;
+}
+
+.profile-text {
+  font-size: 14px;
+  color: #555;
+}
+
 
 .form-control:focus {
   box-shadow: none;
