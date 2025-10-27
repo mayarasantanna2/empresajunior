@@ -177,12 +177,14 @@ a:hover svg {
 }
 sr
 h1,
-h2,
-h3 {
-  font-family: "Quicksand", sans-serif;
+h2{
+
   font-optical-sizing: auto;
   font-style: normal;
   font-family: "Zalando Sans SemiExpanded", sans-serif;
+}
+h3{
+  font-family: "Quicksand", sans-serif;
 }
 
 .titulo {
