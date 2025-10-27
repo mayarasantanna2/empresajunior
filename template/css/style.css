@@ -18,7 +18,14 @@ body {
   background-color: #a8a8a8; 
   margin: 15px 0;         
 }
+.link-empresa {
+    text-decoration: none; /* tira o sublinhado */
+    color: inherit;        /* mantém a cor do texto */
+  }
 
+  .link-empresa:hover {
+    color: #007bff;        /* muda a cor quando passa o mouse */
+  }
 
 .profile-header {
   text-align: center;
@@ -37,7 +44,7 @@ body {
   height: 130px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #00ADB5; /* borda azul */
+  border: 3px solid #3633ff; /* borda azul */
 }
 
 #profileUpload {

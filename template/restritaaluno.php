@@ -84,7 +84,7 @@
   <!-- food section -->
 
 
- <section class="food_section layout_padding-bottom">
+  <section class="food_section layout_padding-bottom">
     <br>
     <br>
     <br>
@@ -115,7 +115,11 @@
                       repellendus sed eaque
                     </p>
                     <div class="options">
-                      <h6>empresa 1</h6>
+                      <a style=" width: 80px; background:transparent; text-decoration: none; color: inherit;"
+                        href="perfilpublicoempresa.php" class="link-empresa">
+                        <h6>empresa 1</h6>
+                      </a>
+
                       <!-- Botão que abre o modal -->
                       <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
                         <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
@@ -133,25 +137,67 @@
               </div>
             </div>
 
-
             <div class="modal fade" id="modalProjeto1" tabindex="-1" aria-labelledby="modalProjeto1Label"
               aria-hidden="true">
               <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="modalProjeto1Label">Detalhes do Projeto 1</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                   </div>
                   <div class="modal-body">
-                    <p>Aqui você pode colocar todas as informações detalhadas do projeto 1.</p>
+                    <h5>Sistema de Estoque para Mercado</h5>
+                    <strong>Descrição:</strong>
+                    <p>O projeto consiste em criar um sistema web simples que permita registrar produtos, controlar
+                      entradas e saídas e gerar relatórios de estoque para um pequeno mercado de bairro.</p>
+
+                    <strong>Requisitos Necessários:</strong>
+                    <p>Conhecimento em HTML, CSS, PHP e MySQL.</p>
+
+                    <strong>Data Limite:</strong>
+                    <p>10/12/2025</p>
+
+                    <strong>Carga horária estimada:</strong>
+                    <p>60 Horas</p>
                   </div>
+
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <div class="btn-box">
+                      <a style="color: white;" id="btnCadastrar" class="btn1">
+                        Cadastrar-Se
+                      </a>
+
+                    </div>
+                    <div class="btn-box">
+                      <a style="color: white;" class="btn1" data-bs-dismiss="modal">
+                        Fechar
+                      </a>
+                    </div>
+
+
                   </div>
                 </div>
               </div>
             </div>
 
+            <div class="modal fade" id="cadastroSucessoModal" tabindex="-1" role="dialog"
+              aria-labelledby="cadastroSucessoModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Cadastro concluído!</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Seu cadastro foi realizado com sucesso!. Realize login para acessar a sua página.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <div class="col-sm-6 col-lg-4 all burger">
               <div class="box">
