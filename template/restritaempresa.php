@@ -71,6 +71,9 @@
               <a class="nav-link" href="perfilempresa.php">Seu Perfil</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="alunoscadastrados.php">Alunos</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="contato.html">Contato</a>
             </li>
           </ul>
@@ -95,6 +98,12 @@
         <h2 class="titulo">
           Seus Projetos Cadastrados
         </h2>
+      </div>
+      <div  class="btn-box">
+        <a style="text-decoration: none;" href="#" class="btn1" data-bs-toggle="modal" data-bs-target="#modalCadastrarProjeto">
+          Cadastrar Projeto
+        </a>
+
       </div>
       <br>
 
@@ -172,7 +181,7 @@
                     </div>
 
                     <div class="btn-box">
-                      <a href="javascript:void(0)" class="btn1" data-bs-toggle="modal" data-bs-target="#modalEditar">
+                      <a style="text-decoration: none;" href="javascript:void(0)" class="btn1" data-bs-toggle="modal" data-bs-target="#modalEditar">
                         Editar
                       </a>
                     </div>
@@ -191,8 +200,8 @@
             <!-- fim modal do projeto -->
 
             <!-- Modal de Edição -->
-            <div style=" font-family: 'Raleway', sans-serif;" class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel"
-              aria-hidden="true">
+            <div style=" font-family: 'Raleway', sans-serif;" class="modal fade" id="modalEditar" tabindex="-1"
+              aria-labelledby="modalEditarLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="border-radius: 15px;">
                   <div class="modal-header">
@@ -204,22 +213,25 @@
                     <form>
                       <div class="form-group mb-3">
                         <label for="Titulo">Título do Projeto:</label>
-                        <input type="text" class="form-control" id="titulo" value="Sistema de Estoque para Mercado" required>
+                        <input type="text" class="form-control" id="titulo" value="Sistema de Estoque para Mercado"
+                          required>
                       </div>
 
                       <div class="form-group mb-3">
                         <label for="descricao">Descrição:</label>
-                         <textarea class="form-control" id="descricao" rows="3">O projeto consiste em criar um sistema web simples que permita registrar produtos, controlar entradas e saídas e gerar relatórios de estoque para um pequeno mercado de bairro.</textarea>
+                        <textarea class="form-control" id="descricao"
+                          rows="3">O projeto consiste em criar um sistema web simples que permita registrar produtos, controlar entradas e saídas e gerar relatórios de estoque para um pequeno mercado de bairro.</textarea>
                       </div>
 
                       <div class="form-group mb-3">
                         <label for="requisitos">Requisitos Necessários:</label>
-                        <input type="text" class="form-control" id="requisitos" value="Conhecimento em HTML, CSS, PHP e MySQL">
+                        <input type="text" class="form-control" id="requisitos"
+                          value="Conhecimento em HTML, CSS, PHP e MySQL">
                       </div>
 
                       <div class="form-group mb-3">
                         <label for="descricao">Data Limite:</label>
-                      <input type="date" name="datalimite" id="datalimite" value="10/12/2025" >
+                        <input type="date" name="datalimite" id="datalimite" value="10/12/2025">
                       </div>
 
                       <div class="form-group mb-3">
@@ -241,7 +253,7 @@
                       <a style="color: white;" data-bs-dismiss="modal"> Cancelar </a>
                     </div>
                     <div class="btn-box">
-                      <a  style="color: white;" data-bs-dismiss="modal"> Salvar Alterações </a>
+                      <a style="color: white;" data-bs-dismiss="modal"> Salvar Alterações </a>
                     </div>
                   </div>
 
@@ -373,6 +385,54 @@
     </div>
     </div>
     </div>
+
+    <!-- Modal Cadastrar Projeto -->
+    <div class="modal fade" id="modalCadastrarProjeto" tabindex="-1" aria-labelledby="modalCadastrarProjetoLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="border-radius: 15px;">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalCadastrarProjetoLabel">Cadastrar Novo Projeto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+          <div class="modal-body">
+            <form id="formCadastrarProjeto">
+              <div class="mb-3">
+                <label for="tituloProjeto" class="form-label">Título do Projeto</label>
+                <input type="text" class="form-control" id="tituloProjeto" placeholder="Digite o título do projeto"
+                  required>
+              </div>
+              <div class="mb-3">
+                <label for="descricaoProjeto" class="form-label">Descrição</label>
+                <textarea class="form-control" id="descricaoProjeto" rows="3" placeholder="Digite a Descrição do Projeto"
+                  required></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="requisitosProjeto" class="form-label">Requisitos Necessários</label>
+                <input type="text" class="form-control" id="requisitosProjeto" placeholder="Ex: HTML, CSS, PHP..."
+                  required>
+              </div>
+              <div class="mb-3">
+                <label for="dataLimite" class="form-label">Data Limite</label>
+                <input type="date" class="form-control" id="dataLimite" required>
+              </div>
+              <div class="mb-3">
+                <label for="cargaHoraria" class="form-label">Carga Horária Estimada (em horas)</label>
+                <input type="number" class="form-control" id="cargaHoraria" min="1" required>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <div class="btn-box">
+              <a class="btn1" data-bs-dismiss="modal" style="color:white;">Cancelar</a>
+              <a style="text-decoration: none;" class="btn1" href="#" style="color:white;" onclick="salvarProjeto()">Cadastrar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fim Modal Cadastrar Projeto -->
+
   </section>
   <!-- end food section -->
 

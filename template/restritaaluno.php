@@ -70,6 +70,7 @@
             <li class="nav-item">
               <a class="nav-link" href="perfilaluno.php">Seu Perfil</a>
             </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="contato.html">Contato</a>
             </li>
@@ -163,7 +164,7 @@
                   <div class="modal-footer">
                     <div class="btn-box">
                       <a style="color: white;" id="btnCadastrar" class="btn1">
-                        Cadastrar-Se
+                        Candidatar-Se
                       </a>
 
                     </div>
