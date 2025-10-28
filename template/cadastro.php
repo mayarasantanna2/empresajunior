@@ -58,11 +58,12 @@
               </h3>
               <p class="text-center text-muted mb-4">Preencha os dados abaixo para criar sua conta na Freetecs</p>
 
-              <form id="cadastroForm" novalidate>
+              <form id="cadastroForm" METHOD="POST" novalidate>
 
                 <div class="form-group">
                   <label for="nome">Nome Completo</label>
-                  <input type="text" class="form-control" name="nomealuno" id="nome" placeholder="Nome Completo" required>
+                  <input type="text" class="form-control" name="nomealuno" id="nome" placeholder="Nome Completo"
+                    required>
                   <div class="invalid-feedback">
                     Por favor, digite seu nome.
                   </div>
@@ -70,7 +71,8 @@
 
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" class="form-control" name="emailaluno" id="emailaluno" placeholder="email@empresa.com" required>
+                  <input type="email" class="form-control" name="emailaluno" id="emailaluno"
+                    placeholder="email@empresa.com" required>
                   <div class="invalid-feedback">
                     Digite um email válido.
                   </div>
@@ -83,18 +85,34 @@
                     Digite um CPF válido.
                   </div>
                 </div>
+                <div class="form-group">
+                  <label for="telefone">Telefone</label>
+                  <input type="tel" class="form-control" name="telefonealuno" id="telefone" placeholder="(00)00000-0000" required>
+                  <div class="invalid-feedback">
+                    Digite o número de telefone.
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="rm">RM</label>
+                  <input type="text" class="form-control" name="rm" id="rm" placeholder="00000" required>
+                  <div class="invalid-feedback">
+                    Digite um RM válido.
+                  </div>
+                </div>
 
                 <div class="form-group">
                   <label for="datanasc">Data de Nascimento</label>
-                  <input type="date" class="form-control" name="dataaluno"id="datanasc" required>
+                  <input type="date" class="form-control" name="dataaluno" id="datanasc" required>
                   <div class="invalid-feedback">
                     Idade Mínima de 15 anos.
                   </div>
                 </div>
 
+
                 <div class="form-group">
                   <label for="curso">Curso</label>
-                  <input type="text" class="form-control" name="cursoaluno" id="curso" placeholder="Informática Para Internet" required>
+                  <input type="text" class="form-control" name="cursoaluno" id="curso"
+                    placeholder="Informática Para Internet" required>
                   <div class="invalid-feedback">
                     Digite seu curso.
                   </div>
@@ -102,7 +120,8 @@
 
                 <div class="form-group">
                   <label for="descricao">Descrição Pessoal</label>
-                  <input type="descricao" class="form-control" name="descaluno" id="descricao" placeholder="Olá, meu nome é..." required>
+                  <input type="descricao" class="form-control" name="descaluno" id="descricao"
+                    placeholder="Olá, meu nome é..." required>
                   <div class="invalid-feedback">
                     Digite sua Descrição Pessoal.
                   </div>
@@ -119,7 +138,8 @@
 
                 <div class="form-group">
                   <label for="password">Senha</label>
-                  <input type="password" class="form-control" name="senhaaluno" id="password" placeholder="Senha" minlength="6" required>
+                  <input type="password" class="form-control" name="senhaaluno" id="password" placeholder="Senha"
+                    minlength="6" required>
                   <div class="invalid-feedback">
                     A senha precisa ter pelo menos 6 caracteres.
                   </div>
@@ -128,8 +148,8 @@
 
                 <div class="form-group">
                   <label for="confirmPassword">Confirmar Senha</label>
-                  <input type="password" class="form-control" name="confsenhaaluno" id="confirmPassword" placeholder="Confirme a senha"
-                    minlength="6" required>
+                  <input type="password" class="form-control" name="confsenhaaluno" id="confirmPassword"
+                    placeholder="Confirme a senha" minlength="6" required>
                   <div class="invalid-feedback">
                     As senhas não coincidem.
                   </div>
@@ -141,7 +161,8 @@
               </form>
               <hr>
 
-              <p class="text-center text-muted small mb-0">Cadastro para empresas? <a href="cadastroempresa.php">Clique Aqui</a></p>
+              <p class="text-center text-muted small mb-0">Cadastro para empresas? <a href="cadastroempresa.php">Clique
+                  Aqui</a></p>
 
             </div>
           </div>
@@ -170,7 +191,7 @@
       </div>
     </div>
   </div>
-<br><br><br>
+  <br><br><br>
   <!-- footer -->
   <footer class="footer_section">
     <div class="container">
@@ -237,7 +258,7 @@
       </div>
       <div class="footer-info">
         <p>@2025 Todos os direitos reservados à FreeTecs</p> <br>
-          
+
         <p>Distribuído por ETEC MCM</p>
         </p>
       </div>
@@ -247,7 +268,21 @@
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="js/bootstrap.js"></script>
+  <script>
+    const telefone = document.getElementById('telefone');
 
+    telefone.addEventListener('input', function (e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length > 11) value = value.slice(0, 11);
+      let formatted = value;
+
+      if (value.length > 0) formatted = '(' + value.substring(0, 2);
+      if (value.length >= 3) formatted += ') ' + value.substring(2, 7);
+      if (value.length >= 8) formatted += '-' + value.substring(7, 11);
+
+      e.target.value = formatted;
+    });
+  </script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const nascimentoInput = document.getElementById('datanasc');
