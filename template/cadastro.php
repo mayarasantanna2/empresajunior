@@ -62,7 +62,7 @@
 
                 <div class="form-group">
                   <label for="nome">Nome Completo</label>
-                  <input type="text" class="form-control" id="nome" placeholder="Nome Completo" required>
+                  <input type="text" class="form-control" name="nomealuno" id="nome" placeholder="Nome Completo" required>
                   <div class="invalid-feedback">
                     Por favor, digite seu nome.
                   </div>
@@ -70,7 +70,7 @@
 
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="email@empresa.com" required>
+                  <input type="email" class="form-control" name="emailaluno" id="emailaluno" placeholder="email@empresa.com" required>
                   <div class="invalid-feedback">
                     Digite um email válido.
                   </div>
@@ -78,7 +78,7 @@
 
                 <div class="form-group">
                   <label for="cpf">CPF</label>
-                  <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" required>
+                  <input type="text" class="form-control" name="cpf" id="cpf" placeholder="000.000.000-00" required>
                   <div class="invalid-feedback">
                     Digite um CPF válido.
                   </div>
@@ -86,7 +86,7 @@
 
                 <div class="form-group">
                   <label for="datanasc">Data de Nascimento</label>
-                  <input type="date" class="form-control" id="datanasc" required>
+                  <input type="date" class="form-control" name="dataaluno"id="datanasc" required>
                   <div class="invalid-feedback">
                     Idade Mínima de 15 anos.
                   </div>
@@ -94,7 +94,7 @@
 
                 <div class="form-group">
                   <label for="curso">Curso</label>
-                  <input type="text" class="form-control" id="curso" placeholder="Informática Para Internet" required>
+                  <input type="text" class="form-control" name="cursoaluno" id="curso" placeholder="Informática Para Internet" required>
                   <div class="invalid-feedback">
                     Digite seu curso.
                   </div>
@@ -102,7 +102,7 @@
 
                 <div class="form-group">
                   <label for="descricao">Descrição Pessoal</label>
-                  <input type="descricao" class="form-control" id="descricao" placeholder="Olá, meu nome é..." required>
+                  <input type="descricao" class="form-control" name="descaluno" id="descricao" placeholder="Olá, meu nome é..." required>
                   <div class="invalid-feedback">
                     Digite sua Descrição Pessoal.
                   </div>
@@ -110,7 +110,7 @@
 
                 <div class="form-group">
                   <label for="habilidades">Habilidades e Competências</label>
-                  <input type="habilidades" class="form-control" id="habilidades"
+                  <input type="habilidades" class="form-control" name="habilidades" id="habilidades"
                     placeholder="Excel básico, PHP Intermediário..." required>
                   <div class="invalid-feedback">
                     Digite suas Habilidades e Competências.
@@ -119,7 +119,7 @@
 
                 <div class="form-group">
                   <label for="password">Senha</label>
-                  <input type="password" class="form-control" id="password" placeholder="Senha" minlength="6" required>
+                  <input type="password" class="form-control" name="senhaaluno" id="password" placeholder="Senha" minlength="6" required>
                   <div class="invalid-feedback">
                     A senha precisa ter pelo menos 6 caracteres.
                   </div>
@@ -128,7 +128,7 @@
 
                 <div class="form-group">
                   <label for="confirmPassword">Confirmar Senha</label>
-                  <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme a senha"
+                  <input type="password" class="form-control" name="confsenhaaluno" id="confirmPassword" placeholder="Confirme a senha"
                     minlength="6" required>
                   <div class="invalid-feedback">
                     As senhas não coincidem.
