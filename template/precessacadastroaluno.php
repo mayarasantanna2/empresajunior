@@ -14,12 +14,21 @@
 
     $insercao = "INSERT INTO `aluno`(`nomealuno`,`emailaluno`,`senhaaluno`,`confsenhaaluno`,`rm`,`dataaluno`,`descaluno`,`cursoaluno`,`habilidade`,`telefonealuno`) VALUES ('','','','','','','','','','')";
     
-    $stmt = $pdo->prepare($consulta);
+    $stmt = $pdo->prepare($insercao);
     
     // Vincula os parâmetros
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':senha', $senha);
-    
+    $stmt->bindParam(':nomealuno', $nomealuno);
+    $stmt->bindParam(':email', $emailaluno);
+    $stmt->bindParam(':senhaaluno', $senhaaluno);
+    $stmt->bindParam(':confsenhaaluno', $confsenhaaluno);
+    $stmt->bindParam(':rm', $rm);
+    $stmt->bindParam(':dataaluno', $dataaluno);
+    $stmt->bindParam(':descaluno', $descaluno);
+    $stmt->bindParam(':cursoaluno', $cursoaluno);
+    $stmt->bindParam(':habilidade', $habilidade);
+    $stmt->bindParam(':cursoaluno', $cursoaluno);
+    $stmt->bindParam(':    telefonealuno', $telefonealuno);
+
     // Executa a consulta
     $stmt->execute();
 
