@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="images/favicon.png" type="">
+
+  <title> Feane </title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- nice select  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
+    integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
+    crossorigin="anonymous" />
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+
+  <div class="hero_area">
+
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              <img class="imglogo" src="images/logo.png" alt="">
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  mx-auto ">
+              <li class="nav-item ">
+                <a class="nav-link" href="index.html">Início </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="contato.html">Contato</a>
+              </li>
+
+
+              <div class="user_option">
+                <div class="dropdown">
+                  <a class="order_online dropdown-toggle" href="#" id="dropdownCadastro" data-toggle="dropdown">
+                    Cadastrar
+                  </a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="cadastro.php">Aluno</a>
+                    <a class="dropdown-item" href="cadastroempresa.php">Empresa</a>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section class="book_section layout_padding">
+      <div class="container">
+        <div class="heading_container">
+          <br>
+          <br>
+          <br>
+          <h2>
+            Entre em contato
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form_container">
+              <form id="contatoForm" onsubmit="return enviarMensagem()">
+                <div>
+                  <input type="text" name="nome" class="form-control" placeholder="Nome Completo" required />
+                </div>
+                <div>
+                  <input type="tel" id="telefone" class="form-control" placeholder="Celular" />
+                </div>
+                <div>
+                  <input type="email" name="email" class="form-control" placeholder="Email" required />
+                </div>
+                <div>
+                  <select name="assunto" class="form-control nice-select wide" required>
+                    <option value="">Selecione o motivo do contato</option>
+                    <option>Dúvida</option>
+                    <option>Sugestão</option>
+                    <option>Reclamação</option>
+                    <option>Elogio</option>
+                    <option>Parceria</option>
+                    <option>Outro</option>
+                  </select>
+                </div>
+                <div>
+                  <textarea name="mensagem" rows="5" placeholder="Escreva sua mensagem aqui" class="form-control"
+                    required></textarea>
+                </div>
+                <div class="btn_box">
+                  <button type="submit">Enviar</button>
+                </div>
+              </form>
+
+              <script>
+                function enviarMensagem() {
+                  alert("Mensagem enviada com sucesso!");
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  document.getElementById('contatoForm').reset();
+
+                  return false;
+                }
+
+                const telefone = document.getElementById('telefone');
+
+                telefone.addEventListener('input', function (e) {
+                  let value = e.target.value.replace(/\D/g, '');
+                  if (value.length > 11) value = value.slice(0, 11);
+                  let formatted = value;
+
+                  if (value.length > 0) formatted = '(' + value.substring(0, 2);
+                  if (value.length >= 3) formatted += ') ' + value.substring(2, 7);
+                  if (value.length >= 8) formatted += '-' + value.substring(7, 11);
+
+                  e.target.value = formatted;
+                });
+              </script>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 footer-col">
+          <div class="footer_contact">
+            <h4>
+              Contato
+            </h4>
+            <div class="contact_link_box">
+
+              <a href="">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  Tel +55 (11)97398-3920
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>
+                  freetecs@gmail.com
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 footer-col">
+          <div class="footer_detail">
+            <a href="" class="footer-logo">
+              Freetecs
+            </a>
+            <p>
+              Transforme aprendizado em experiência e conquiste seu certificado.
+            </p>
+            <div class="footer_social">
+              <a href="">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-pinterest" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 footer-col">
+          <h4>
+            Horário de funcionamento
+          </h4>
+          <p>
+            Seg-Sex: 7:00-19:00
+          </p>
+          <p> Sábado: 9:00-16:00</p>
+
+        </div>
+      </div>
+      <div class="footer-info">
+        <p>@2025 Todos os direitos reservados à FreeTecs</p> <br>
+          
+        <p>Distribuído por ETEC MCM</p>
+        </p>
+      </div>
+    </div>
+  </footer>
+    <!-- footer section -->
+
+    <!-- jQery -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- popper js -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+      </script>
+    <!-- bootstrap js -->
+    <script src="js/bootstrap.js"></script>
+    <!-- owl slider -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+    </script>
+    <!-- isotope js -->
+    <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+    <!-- nice select -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+    <!-- custom js -->
+    <script src="js/custom.js"></script>
+    <!-- Google Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+    </script>
+    <!-- End Google Map -->
+
+</body>
+
+</html>
+</body>
+
+</html>
