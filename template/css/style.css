@@ -12,6 +12,14 @@ body {
   background-color: #f8f9fa;
   border-bottom: 2px solid #e0e0e0;
 }
+.carrossel{
+  background-color: #010054;
+  color: white;
+
+  padding: 25px 25px 15px 25px;
+  border-radius: 5px;
+}
+
 .linha {
   border: none;          
   height: 2px;            
@@ -1029,7 +1037,7 @@ h5 {
 }
 
 .client_section .box .detail-box {
-  background-color: #ffffff;
+  background-color: #010054;
   color: #ffffff;
   padding: 25px 25px 15px 25px;
   border-radius: 5px;

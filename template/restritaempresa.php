@@ -261,7 +261,7 @@
                   </div>
                   <div class="detail-box">
                     <h5>
-                      projeto 3
+                      projeto 2
                     </h5>
                     <p>
                       Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem

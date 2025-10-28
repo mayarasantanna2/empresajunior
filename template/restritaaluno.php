@@ -109,10 +109,10 @@
                     <img src="images/prancheta2.png" alt="">
                   </div>
                   <div class="detail-box">
-                    <h5>projeto 1</h5>
+                    <h5>Sistema de Estoque para Mercado</h5>
                     <p>
-                      Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      repellendus sed eaque
+                      O projeto consiste em criar um sistema web simples que permita registrar produtos, controlar
+                      entradas e saídas e gerar relatórios de estoque para um pequeno mercado de bairro.
                     </p>
                     <div class="options">
                       <a style=" width: 80px; background:transparent; text-decoration: none; color: inherit;"
