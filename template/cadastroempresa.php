@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>Cadastro - Freetecs</title>
-
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet" />
-  <link href="css/responsive.css" rel="stylesheet" />
-</head>
-
 <body>
   <!-- header -->
   <header class="header_section">
@@ -170,78 +158,9 @@
     </div>
   </div>
 <br><br><br><br>
-  <!-- footer -->
-   <footer class="footer_section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 footer-col">
-          <div class="footer_contact">
-            <h4>
-              Contato
-            </h4>
-            <div class="contact_link_box">
 
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Tel +55 (11)97398-3920
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>
-                  freetecs@gmail.com
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 footer-col">
-          <div class="footer_detail">
-            <a href="" class="footer-logo">
-              Freetecs
-            </a>
-            <p>
-              Transforme aprendizado em experiência e conquiste seu certificado.
-            </p>
-            <div class="footer_social">
-              <a href="">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-pinterest" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 footer-col">
-          <h4>
-            Horário de funcionamento
-          </h4>
-          <p>
-            Seg-Sex: 7:00-19:00
-          </p>
-          <p> Sábado: 9:00-16:00</p>
+  <?php require 'head_footer.php' ?>
 
-        </div>
-      </div>
-      <div class="footer-info">
-        <p>@2025 Todos os direitos reservados à FreeTecs</p> <br>
-          
-        <p>Distribuído por ETEC MCM</p>
-        </p>
-      </div>
-    </div>
-  </footer>
   <!-- scripts -->
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
