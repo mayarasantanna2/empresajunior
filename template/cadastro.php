@@ -36,7 +36,7 @@
   <br><br><br>
 
   <!-- main cadastro content -->
-  <section class="layout_padding-top" style="padding-top:120px;">
+  <section class="layout_padding-top"  style="padding-top:120px;">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-7 col-lg-5">
@@ -46,11 +46,11 @@
               </h3>
               <p class="text-center text-muted mb-4">Preencha os dados abaixo para criar sua conta na Freetecs</p>
 
-              <form id="cadastroForm" METHOD="POST" novalidate>
+              <form id="cadastroForm" METHOD="POST"action="cadastroaluno.php" novalidate>
 
                 <div class="form-group">
                   <label for="nome">Nome Completo</label>
-                  <input type="text" class="form-control" name="nomealuno" id="nome" placeholder="Nome Completo"
+                  <input type="text" class="form-control" name="nome_aluno" id="nome_aluno" placeholder="Nome Completo"
                     required>
                   <div class="invalid-feedback">
                     Por favor, digite seu nome.
@@ -59,30 +59,22 @@
 
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" class="form-control" name="emailaluno" id="emailaluno"
+                  <input type="email" class="form-control" name="email_aluno" id="email_aluno"
                     placeholder="email@empresa.com" required>
                   <div class="invalid-feedback">
                     Digite um email válido.
                   </div>
                 </div>
-
-                <div class="form-group">
-                  <label for="cpf">CPF</label>
-                  <input type="text" class="form-control" name="cpf" id="cpf" placeholder="000.000.000-00" required>
-                  <div class="invalid-feedback">
-                    Digite um CPF válido.
-                  </div>
-                </div>
                 <div class="form-group">
                   <label for="telefone">Telefone</label>
-                  <input type="tel" class="form-control" name="telefonealuno" id="telefone" placeholder="(00)00000-0000" required>
+                  <input type="tel" class="form-control" name="telefone_aluno" id="telefone" placeholder="(00)00000-0000" required>
                   <div class="invalid-feedback">
                     Digite o número de telefone.
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="rm">RM</label>
-                  <input type="text" class="form-control" name="rm" id="rm" placeholder="00000" required>
+                  <input type="text" class="form-control" name="RM" id="RM" placeholder="00000" required>
                   <div class="invalid-feedback">
                     Digite um RM válido.
                   </div>
@@ -90,7 +82,7 @@
 
                 <div class="form-group">
                   <label for="datanasc">Data de Nascimento</label>
-                  <input type="date" class="form-control" name="dataaluno" id="datanasc" required>
+                  <input type="date" class="form-control" name="datanasc" id="datanasc" required>
                   <div class="invalid-feedback">
                     Idade Mínima de 15 anos.
                   </div>
@@ -99,7 +91,7 @@
 
                 <div class="form-group">
                   <label for="curso">Curso</label>
-                  <input type="text" class="form-control" name="cursoaluno" id="curso"
+                  <input type="text" class="form-control" name="curso" id="curso"
                     placeholder="Informática Para Internet" required>
                   <div class="invalid-feedback">
                     Digite seu curso.
@@ -108,7 +100,7 @@
 
                 <div class="form-group">
                   <label for="descricao">Descrição Pessoal</label>
-                  <input type="descricao" class="form-control" name="descaluno" id="descricao"
+                  <input type="descricao" class="form-control" name="descricao" id="descricao"
                     placeholder="Olá, meu nome é..." required>
                   <div class="invalid-feedback">
                     Digite sua Descrição Pessoal.
@@ -126,7 +118,7 @@
 
                 <div class="form-group">
                   <label for="password">Senha</label>
-                  <input type="password" class="form-control" name="senhaaluno" id="password" placeholder="Senha"
+                  <input type="password" class="form-control" name="senha_aluno" id="password" placeholder="Senha"
                     minlength="6" required>
                   <div class="invalid-feedback">
                     A senha precisa ter pelo menos 6 caracteres.
@@ -231,31 +223,6 @@
     });
 
 
-    // Máscara e validação CPF
-    document.addEventListener("DOMContentLoaded", () => {
-      const cpfInput = document.getElementById('cpf');
-
-      cpfInput.addEventListener('input', function (e) {
-        let v = e.target.value.replace(/\D/g, ''); // remove tudo que não for número
-
-        // aplica a máscara: 000.000.000-00
-        v = v.replace(/(\d{3})(\d)/, '$1.$2');
-        v = v.replace(/(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
-        v = v.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
-
-        e.target.value = v.substring(0, 14);
-
-        // valida se tem 11 números
-        const apenasNumeros = v.replace(/\D/g, '');
-        if (apenasNumeros.length < 11) {
-          cpfInput.setCustomValidity('CPF inválido');
-        } else {
-          cpfInput.setCustomValidity('');
-        }
-      });
-    });
-
-
     // Validação geral do formulário
     (function () {
       const form = document.getElementById('cadastroForm');
@@ -280,14 +247,11 @@
 
         // Exibe o modal de sucesso
         $('#cadastroSucessoModal').modal('show');
-
         // Limpa o formulário após fechar o modal
         $('#cadastroSucessoModal').on('hidden.bs.modal', function () {
           form.reset();
           form.classList.remove('was-validated');
         });
-      });
-    })();
   </script>
 
 </body>

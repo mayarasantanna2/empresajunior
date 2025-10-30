@@ -1,6 +1,6 @@
 <?php
     $host = 'localhost';
-    $dbname = 'freetec';
+    $dbname = 'freetecs';
     $user = 'root';
     $pass = '';
     try {

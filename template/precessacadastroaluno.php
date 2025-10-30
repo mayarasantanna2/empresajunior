@@ -1,55 +1,56 @@
- <?php
- session_start();    
-    include_once 'conexao.php';
-    $nome = $_POST['nomealuno'];
-    $email = $_POST['emailaluno'];
-    $senha = $_POST['senhaaluno'];
-    $confsenhaaluno = $_POST['confsenhaaluno'];
-    $rm = $_POST['rm'];
-    $dataaluno = $_POST['dataaluno'];
-    $descaluno = $_POST['descaluno'];
-    $cursoaluno= $_POST['cursoaluno'];
-    $habilidade = $_POST['habilidade'];
-    $telaluno = $_POST['telefonealuno'];
+<?php
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-    $insercao = "INSERT INTO `aluno`(`nomealuno`,`emailaluno`,`senhaaluno`,`confsenhaaluno`,`rm`,`dataaluno`,`descaluno`,`cursoaluno`,`habilidade`,`telefonealuno`) VALUES ('','','','','','','','','','')";
-    
-    $stmt = $pdo->prepare($insercao);
-    
-    // Vincula os parâmetros
-    $stmt->bindParam(':nomealuno', $nomealuno);
-    $stmt->bindParam(':email', $emailaluno);
-    $stmt->bindParam(':senhaaluno', $senhaaluno);
-    $stmt->bindParam(':confsenhaaluno', $confsenhaaluno);
-    $stmt->bindParam(':rm', $rm);
-    $stmt->bindParam(':dataaluno', $dataaluno);
-    $stmt->bindParam(':descaluno', $descaluno);
-    $stmt->bindParam(':cursoaluno', $cursoaluno);
-    $stmt->bindParam(':habilidade', $habilidade);
-    $stmt->bindParam(':cursoaluno', $cursoaluno);
-    $stmt->bindParam(':    telefonealuno', $telefonealuno);
+include_once 'conexao.php';
 
-    // Executa a consulta
-    $stmt->execute();
+$nome = $_POST['nome_aluno'];
+$email = $_POST['email_aluno'];
+$senha = $_POST['senha_aluno'];
+$confsenha_aluno = $_POST['confsenha_aluno'];
+$RM = $_POST['RM'];
+$datanasc = $_POST['datanasc'];
+$descricao = $_POST['descricao'];
+$curso = $_POST['curso'];
+$habilidades = $_POST['habilidades'];
+$telefone_aluno = $_POST['telefone_aluno'];
 
-    // Obtém o número de registros encontrados
-    $registros = $stmt->rowCount();
-    
-    // Obtém o resultado
-    $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    //var_dump($resultado);
-    
-    
-    if($registros == 1){
-        $_SESSION['id'] = $resultado['id'];
-        $_SESSION['nome'] = $resultado['nome'];
-        $_SESSION['email'] = $resultado['email'];
-        header('Location: restrita.php');
-        //echo "ACESSO PERMITIDO PARA A RESTRITA.PHP";
-    }else{        
-        //echo "VOCÊ NÃO TEM PERMISSÃO";
-        header('Location: index.php');
-      }
 
-        ?>
+// Criptografia da senha
+$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+$insercao = "INSERT INTO `aluno` (`nome_aluno`, `email_aluno`, `senha_aluno`, `confsenha_aluno`, `RM`, `datanasc`, `descricao`, `curso$curso`, `habilidades`, `telefone_aluno`) 
+VALUES (:nome_aluno, :email_aluno, :senha_aluno, :RM, :datanasc, :descricao, :curso, :habilidades, :telefone_aluno)";
+
+$stmt = $pdo->prepare($insercao);
+
+// Vincular os parâmetros
+$stmt->bindParam(':nome_aluno', $nome);
+$stmt->bindParam(':email_aluno', $email);
+$stmt->bindParam(':senha_aluno', $senhaHash);
+$stmt->bindParam(':rm', $rm);
+$stmt->bindParam(':datanasc', $datanasc);
+$stmt->bindParam(':descricao', $descricao);
+$stmt->bindParam(':curso', $curso);
+$stmt->bindParam(':habilidades', $habilidades);
+$stmt->bindParam(':telefone_aluno', $telefone_aluno);
+
+// Executar a consulta
+if ($stmt->execute()) {
+    // Obter o ID do último aluno inserido
+    $id_aluno = $pdo->lastInsertId();
+
+    // Salvar dados na sessão
+    $_SESSION['id_aluno'] = $id_aluno;
+    $_SESSION['nome_aluno'] = $nome;
+    $_SESSION['email_aluno'] = $email;
+
+    header('Location: login.php');
+    exit();
+} else {
+    header('Location: index.php?error=registration_failed');
+    exit();
+}
+?>
