@@ -46,7 +46,7 @@
               </h3>
               <p class="text-center text-muted mb-4">Preencha os dados abaixo para criar sua conta na Freetecs</p>
 
-              <form id="cadastroForm" METHOD="POST"action="cadastroaluno.php" novalidate>
+              <form id="cadastroForm" METHOD="POST"action="processacadastroaluno.php" novalidate>
 
                 <div class="form-group">
                   <label for="nome">Nome Completo</label>
@@ -128,7 +128,7 @@
 
                 <div class="form-group">
                   <label for="confirmPassword">Confirmar Senha</label>
-                  <input type="password" class="form-control" name="confsenhaaluno" id="confirmPassword"
+                  <input type="password" class="form-control" name="confsenha_aluno" id="confirmPassword"
                     placeholder="Confirme a senha" minlength="6" required>
                   <div class="invalid-feedback">
                     As senhas não coincidem.
@@ -180,79 +180,81 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="js/bootstrap.js"></script>
   <script>
-    const telefone = document.getElementById('telefone');
+        const telefone = document.getElementById('telefone');
 
-    telefone.addEventListener('input', function (e) {
-      let value = e.target.value.replace(/\D/g, '');
-      if (value.length > 11) value = value.slice(0, 11);
-      let formatted = value;
+        telefone.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            let formatted = value;
 
-      if (value.length > 0) formatted = '(' + value.substring(0, 2);
-      if (value.length >= 3) formatted += ') ' + value.substring(2, 7);
-      if (value.length >= 8) formatted += '-' + value.substring(7, 11);
+            if (value.length > 0) formatted = '(' + value.substring(0, 2);
+            if (value.length >= 3) formatted += ') ' + value.substring(2, 7);
+            if (value.length >= 8) formatted += '-' + value.substring(7, 11);
 
-      e.target.value = formatted;
-    });
-  </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const nascimentoInput = document.getElementById('datanasc');
-
-      nascimentoInput.addEventListener('change', function (e) {
-        const hoje = new Date();
-        const valor = new Date(e.target.value);
-
-        if (isNaN(valor)) {
-          nascimentoInput.setCustomValidity('Data inválida');
-          return;
-        }
-
-        // Calcula a idade
-        let idade = hoje.getFullYear() - valor.getFullYear();
-        const m = hoje.getMonth() - valor.getMonth();
-        if (m < 0 || (m === 0 && hoje.getDate() < valor.getDate())) {
-          idade--;
-        }
-
-        if (idade < 15) {
-          nascimentoInput.setCustomValidity('Você precisa ter pelo menos 15 anos');
-        } else {
-          nascimentoInput.setCustomValidity('');
-        }
-      });
-    });
-
-
-    // Validação geral do formulário
-    (function () {
-      const form = document.getElementById('cadastroForm');
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-
-        if (password !== confirmPassword) {
-          document.getElementById('confirmPassword').setCustomValidity('Senhas não coincidem');
-        } else {
-          document.getElementById('confirmPassword').setCustomValidity('');
-        }
-
-        if (!form.checkValidity()) {
-          form.classList.add('was-validated');
-          return;
-        }
-
-        // Exibe o modal de sucesso
-        $('#cadastroSucessoModal').modal('show');
-        // Limpa o formulário após fechar o modal
-        $('#cadastroSucessoModal').on('hidden.bs.modal', function () {
-          form.reset();
-          form.classList.remove('was-validated');
+            e.target.value = formatted;
         });
-  </script>
+    </script>
+    
+    <script>
+        // Script de Validação de Data de Nascimento (Mantido)
+        document.addEventListener("DOMContentLoaded", () => {
+            const nascimentoInput = document.getElementById('datanasc');
+
+            nascimentoInput.addEventListener('change', function (e) {
+                const hoje = new Date();
+                const valor = new Date(e.target.value);
+
+                if (isNaN(valor)) {
+                    nascimentoInput.setCustomValidity('Data inválida');
+                    return;
+                }
+
+                let idade = hoje.getFullYear() - valor.getFullYear();
+                const m = hoje.getMonth() - valor.getMonth();
+                if (m < 0 || (m === 0 && hoje.getDate() < valor.getDate())) {
+                    idade--;
+                }
+
+                if (idade < 15) {
+                    nascimentoInput.setCustomValidity('Você precisa ter pelo menos 15 anos');
+                } else {
+                    nascimentoInput.setCustomValidity('');
+                }
+            });
+        });
+
+
+        // Validação geral do formulário (AJUSTADA PARA SUBMIT TRADICIONAL)
+        (function () {
+            const form = document.getElementById('cadastroForm');
+
+            form.addEventListener('submit', function (e) {
+                // 1. O e.preventDefault() original foi removido para permitir o envio se a validação passar.
+
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                const confirmPasswordInput = document.getElementById('confirmPassword');
+
+                // 2. Validação de senhas no Front-end
+                if (password !== confirmPassword) {
+                    confirmPasswordInput.setCustomValidity('Senhas não coincidem');
+                } else {
+                    confirmPasswordInput.setCustomValidity('');
+                }
+
+                // 3. Se houver qualquer falha na validação, barra o envio.
+                if (!form.checkValidity()) {
+                    e.preventDefault(); // <-- IMPEDE O ENVIO SE INVÁLIDO
+                    e.stopPropagation();
+                    form.classList.add('was-validated');
+                    return;
+                }
+                
+                // 4. Se a validação for OK, o código continua e o formulário é ENVIADO para processacadastroaluno.php
+                // (REMOVIDA TODA A LÓGICA DO MODAL E AJAX AQUI)
+            });
+        })();
+    </script>
 
 </body>
 
