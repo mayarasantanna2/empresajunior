@@ -45,7 +45,7 @@
               <h3 class="card-title text-center mb-3">Cadastre sua empresa</h3>
               <p class="text-center text-muted mb-4">Preencha os dados abaixo para criar sua conta na Freetecs</p>
 
-              <form id="cadastroForm" novalidate>
+              <form id="cadastroForm" METHOD="POST" novalidate>
 
                 <div class="form-group">
                   <label for="nome">Nome da Empresa</label>
