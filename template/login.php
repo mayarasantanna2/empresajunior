@@ -54,10 +54,10 @@
               <h3 class="card-title text-center mb-3">Acesse sua conta</h3>
               <p class="text-center text-muted mb-4">Entre com seu e-mail e senha para continuar na Freetecs</p>
 
-              <form id="loginForm" novalidate>
+              <form id="loginForm" METHOD="POST" action="processaloginaluno.php"novalidate>
                 <div class="form-group">
                   <label for="email">E-mail</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="seu@exemplo.com"
+                  <input type="email" class="form-control" id="email_aluno" name="email_aluno" placeholder="seu@exemplo.com"
                     required>
                   <div class="invalid-feedback">
                     Informe um e-mail válido.
@@ -66,7 +66,7 @@
 
                 <div class="form-group">
                   <label for="password">Senha</label>
-                  <input type="password" class="form-control" id="password" name="password" placeholder="Senha"
+                  <input type="password" class="form-control" id="password" name="senha_aluno" placeholder="Senha"
                     minlength="6" required>
                   <div class="invalid-feedback">
                     A senha precisa ter pelo menos 6 caracteres.
@@ -126,51 +126,24 @@
     crossorigin="anonymous"></script>
   <script src="js/bootstrap.js"></script>
 
-  <script>
-    // validação e exibição do modal
+<script>
+    // Validação geral do formulário (AGORA COM A LÓGICA CORRETA)
     (function () {
-      const form = document.getElementById('loginForm');
+        const form = document.getElementById('loginForm');
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
+        form.addEventListener('submit', function (e) {
+            // 1. Verifica se o formulário é válido (HTML5 validation)
+            if (!form.checkValidity()) {
+                e.preventDefault(); // Impede o envio se for inválido
+                e.stopPropagation();
+                form.classList.add('was-validated');
+                return;
+            }
 
-        // HTML5 validity
-        if (!form.checkValidity()) {
-          form.classList.add('was-validated');
-          return;
-        }
-      });
-    });
-
-    // validação geral e login falso
-    (function () {
-      const form = document.getElementById('loginForm');
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (!form.checkValidity()) {
-          form.classList.add('was-validated');
-          return;
-        }
-
-        const email = document.getElementById('email').value;
-        const senha = document.getElementById('password').value;
-
-        // falso
-        const emailCorreto = "teste@gmail.com";
-        const senhaCorreta = "123456";
-
-        if (email === emailCorreto && senha === senhaCorreta) {
-          window.location.href = "restritaaluno.php";
-        } else {
-          $('#loginErrorModal').modal('show');
-        }
-      });
+         
+        });
     })();
-  </script>
+</script>
 </body>
 
 </html>
