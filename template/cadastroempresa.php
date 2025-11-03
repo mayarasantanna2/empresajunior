@@ -45,11 +45,12 @@
               <h3 class="card-title text-center mb-3">Cadastre sua empresa</h3>
               <p class="text-center text-muted mb-4">Preencha os dados abaixo para criar sua conta na Freetecs</p>
 
-              <form id="cadastroForm" METHOD="POST" novalidate>
+              <form id="cadastroForm" METHOD="POST" action="processacadastroempresa.php" novalidate>
 
                 <div class="form-group">
                   <label for="nome">Nome da Empresa</label>
-                  <input type="text" class="form-control" id="nome" placeholder="Nome da empresa" required>
+                  <input type="text" class="form-control" id="nome" placeholder="Nome da empresa" name="nome_empresa"
+                    required>
                   <div class="invalid-feedback">
                     Por favor, digite o nome da empresa.
                   </div>
@@ -57,7 +58,8 @@
 
                 <div class="form-group">
                   <label for="cnpj">CNPJ</label>
-                  <input type="text" class="form-control" id="cnpj" placeholder="00.000.000/0000-00" required>
+                  <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00"
+                    required>
                   <div class="invalid-feedback">
                     Digite um CNPJ válido com 14 números.
                   </div>
@@ -65,7 +67,8 @@
 
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="email@empresa.com" required>
+                  <input type="email" class="form-control" id="email" name="email_empresa"
+                    placeholder="email@empresa.com" required>
                   <div class="invalid-feedback">
                     Digite um email válido.
                   </div>
@@ -73,7 +76,8 @@
 
                 <div class="form-group">
                   <label for="telefone">Telefone</label>
-                  <input type="tel" class="form-control" id="telefone" placeholder="(00)00000-0000" required>
+                  <input type="tel" class="form-control" id="telefone" name="telefone_empresa"
+                    placeholder="(00)00000-0000" required>
                   <div class="invalid-feedback">
                     Digite o número de telefone.
                   </div>
@@ -81,8 +85,8 @@
 
                 <div class="form-group">
                   <label for="area">Área de Atuação</label>
-                  <input type="text" class="form-control" id="atuacao" placeholder="Ex: Saúde, Educação, Tecnologia..."
-                    required>
+                  <input type="text" class="form-control" id="atuacao" name="atuacao"
+                    placeholder="Ex: Saúde, Educação, Tecnologia..." required>
                   <div class="invalid-feedback">
                     Digite a área de atuação da empresa.
                   </div>
@@ -90,7 +94,7 @@
 
                 <div class="form-group">
                   <label for="descricao">Descrição Institucional</label>
-                  <input type="text" class="form-control" id="descricao"
+                  <input type="text" class="form-control" id="descricao" name="descricao_empresa"
                     placeholder="Descrição Institucional da empresa." required>
                   <div class="invalid-feedback">
                     Digite a descrição Institucional da empresa.
@@ -99,7 +103,7 @@
 
                 <div class="form-group">
                   <label for="ano">Ano de Fundação</label>
-                  <input type="number" class="form-control" id="ano" placeholder="Ex: 2020" required>
+                  <input type="number" class="form-control" name="ano" id="ano" placeholder="Ex: 2020" required>
                   <div class="invalid-feedback">
                     O ano deve ter 4 dígitos.
                   </div>
@@ -107,7 +111,8 @@
 
                 <div class="form-group">
                   <label for="password">Senha</label>
-                  <input type="password" class="form-control" id="password" placeholder="Senha" minlength="6" required>
+                  <input type="password" class="form-control" name="senha_empresa" id="password" placeholder="Senha"
+                    minlength="6" required>
                   <div class="invalid-feedback">
                     A senha precisa ter pelo menos 6 caracteres.
                   </div>
@@ -115,8 +120,8 @@
 
                 <div class="form-group">
                   <label for="confirmPassword">Confirmar Senha</label>
-                  <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme a senha"
-                    minlength="6" required>
+                  <input type="password" class="form-control" name="confsenha_empresa" id="confirmPassword"
+                    placeholder="Confirme a senha" minlength="6" required>
                   <div class="invalid-feedback">
                     As senhas não coincidem.
                   </div>
@@ -157,7 +162,7 @@
       </div>
     </div>
   </div>
-<br><br><br><br>
+  <br><br><br><br>
 
   <?php require 'head_footer.php' ?>
 
@@ -180,66 +185,39 @@
 
       e.target.value = formatted;
     });
-
-    // Máscara e validação CNPJ
-    document.addEventListener("DOMContentLoaded", () => {
-      const cnpjInput = document.getElementById('cnpj');
-
-      cnpjInput.addEventListener('input', function (e) {
-        let v = e.target.value.replace(/\D/g, '');
-        v = v.replace(/^(\d{2})(\d)/, '$1.$2');
-        v = v.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
-        v = v.replace(/\.(\d{3})(\d)/, '.$1/$2');
-        v = v.replace(/(\d{4})(\d)/, '$1-$2');
-        e.target.value = v.substring(0, 18);
-
-        const apenasNumeros = e.target.value.replace(/\D/g, '');
-        if (apenasNumeros.length < 14) {
-          cnpjInput.setCustomValidity('CNPJ inválido');
-        } else {
-          cnpjInput.setCustomValidity('');
-        }
-      });
-    });
+    // FUNÇÃO DE VALIDAÇÃO DO ANO (QUATRO DÍGITOS, NÃO PODE SER NO FUTURO)
+    function validarAnoFundacao(ano) {
+      const anoAtual = new Date().getFullYear();
+      return ano && ano.length === 4 && parseInt(ano) <= anoAtual;
+    }
 
     // Validação geral do formulário
     (function () {
       const form = document.getElementById('cadastroForm');
+      const cnpjInput = document.getElementById('cnpj');
+      const anoInput = document.getElementById('ano');
 
       form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
-        const ano = document.getElementById('ano');
-
-        // valida ano com 4 dígitos
-        if (!/^\d{4}$/.test(ano.value)) {
-          ano.setCustomValidity('Ano inválido');
-        } else {
-          ano.setCustomValidity('');
-        }
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        let validacaoCustomizada = true; // Flag para validar campos customizados
 
         if (password !== confirmPassword) {
-          document.getElementById('confirmPassword').setCustomValidity('Senhas não coincidem');
+          confirmPasswordInput.setCustomValidity('Senhas não coincidem');
+          validacaoCustomizada = false;
         } else {
-          document.getElementById('confirmPassword').setCustomValidity('');
+          confirmPasswordInput.setCustomValidity('');
         }
 
-        if (!form.checkValidity()) {
-          form.classList.add('was-validated');
-          return;
+        if (!validarAnoFundacao(anoInput.value)) {
+          anoInput.setCustomValidity('Ano de Fundação inválido');
+          validacaoCustomizada = false;
+        } else {
+          anoInput.setCustomValidity('');
         }
-
-        $('#cadastroSucessoModal').modal('show');
-
-        $('#cadastroSucessoModal').on('hidden.bs.modal', function () {
-          form.reset();
-          form.classList.remove('was-validated');
-        });
       });
-    })();
+      });
   </script>
 
 </body>

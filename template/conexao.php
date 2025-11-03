@@ -1,14 +1,19 @@
 <?php
-    $host = 'localhost';
-    $dbname = 'freetecs';
-    $user = 'root';
-    $pass = '';
-    try {
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
-        // Habilita erros do PDO
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Conexão bem-sucedida!";
-    } catch (PDOException $e) {
-        echo "Erro na conexão: " . $e->getMessage();
-    }
+// Arquivo: conexao.php
+
+$host = 'localhost';
+$dbname = 'freetecs';
+$user = 'root';
+$pass = '';
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+    
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+
+} catch (PDOException $e) {
+    
+    die("Erro na conexão com o Banco de Dados: " . $e->getMessage());
+}
 ?>

@@ -31,8 +31,9 @@ try {
         exit();
     }
     
+    // Criptografia da senha
    $senhaHash = password_hash($senha, PASSWORD_DEFAULT); 
-
+   
     $insercao = "INSERT INTO `aluno` (`nome_aluno`, `email_aluno`, `senha_aluno`, `RM`, `datanasc`, `descricao`, `curso`, `habilidades`, `telefone_aluno`) 
     VALUES (:nome_aluno, :email_aluno, :senha_aluno, :RM, :datanasc, :descricao, :curso, :habilidades, :telefone_aluno)";
 

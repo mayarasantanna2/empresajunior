@@ -229,20 +229,17 @@
             const form = document.getElementById('cadastroForm');
 
             form.addEventListener('submit', function (e) {
-                // 1. O e.preventDefault() original foi removido para permitir o envio se a validação passar.
 
                 const password = document.getElementById('password').value;
                 const confirmPassword = document.getElementById('confirmPassword').value;
                 const confirmPasswordInput = document.getElementById('confirmPassword');
 
-                // 2. Validação de senhas no Front-end
                 if (password !== confirmPassword) {
                     confirmPasswordInput.setCustomValidity('Senhas não coincidem');
                 } else {
                     confirmPasswordInput.setCustomValidity('');
                 }
 
-                // 3. Se houver qualquer falha na validação, barra o envio.
                 if (!form.checkValidity()) {
                     e.preventDefault(); // <-- IMPEDE O ENVIO SE INVÁLIDO
                     e.stopPropagation();
@@ -250,8 +247,7 @@
                     return;
                 }
                 
-                // 4. Se a validação for OK, o código continua e o formulário é ENVIADO para processacadastroaluno.php
-                // (REMOVIDA TODA A LÓGICA DO MODAL E AJAX AQUI)
+              
             });
         })();
     </script>
