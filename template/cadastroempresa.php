@@ -49,7 +49,7 @@
 
                 <div class="form-group">
                   <label for="nome">Nome da Empresa</label>
-                  <input type="text" class="form-control" id="nome" placeholder="Nome da empresa" name="nome_empresa"
+                  <input type="text" class="form-control" id="nome_empresa" placeholder="Nome da empresa" name="nome_empresa"
                     required>
                   <div class="invalid-feedback">
                     Por favor, digite o nome da empresa.
@@ -85,7 +85,7 @@
 
                 <div class="form-group">
                   <label for="area">Área de Atuação</label>
-                  <input type="text" class="form-control" id="atuacao" name="atuacao"
+                  <input type="text" class="form-control" id="atuacao" name="area_de_atuacao"
                     placeholder="Ex: Saúde, Educação, Tecnologia..." required>
                   <div class="invalid-feedback">
                     Digite a área de atuação da empresa.
@@ -94,7 +94,7 @@
 
                 <div class="form-group">
                   <label for="descricao">Descrição Institucional</label>
-                  <input type="text" class="form-control" id="descricao" name="descricao_empresa"
+                  <input type="text" class="form-control" id="descricao" name="descricao_institucional"
                     placeholder="Descrição Institucional da empresa." required>
                   <div class="invalid-feedback">
                     Digite a descrição Institucional da empresa.
@@ -103,7 +103,7 @@
 
                 <div class="form-group">
                   <label for="ano">Ano de Fundação</label>
-                  <input type="number" class="form-control" name="ano" id="ano" placeholder="Ex: 2020" required>
+                  <input type="number" class="form-control" name="ano_de_fundacao" id="ano" placeholder="Ex: 2020" required>
                   <div class="invalid-feedback">
                     O ano deve ter 4 dígitos.
                   </div>
@@ -172,53 +172,72 @@
   <script src="js/bootstrap.js"></script>
 
   <script>
-    const telefone = document.getElementById('telefone');
+   const telefone = document.getElementById('telefone');
 
-    telefone.addEventListener('input', function (e) {
-      let value = e.target.value.replace(/\D/g, '');
-      if (value.length > 11) value = value.slice(0, 11);
-      let formatted = value;
+        telefone.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            let formatted = value;
 
-      if (value.length > 0) formatted = '(' + value.substring(0, 2);
-      if (value.length >= 3) formatted += ') ' + value.substring(2, 7);
-      if (value.length >= 8) formatted += '-' + value.substring(7, 11);
+            if (value.length > 0) formatted = '(' + value.substring(0, 2);
+            if (value.length >= 3) formatted += ') ' + value.substring(2, 7);
+            if (value.length >= 8) formatted += '-' + value.substring(7, 11);
 
-      e.target.value = formatted;
-    });
-    // FUNÇÃO DE VALIDAÇÃO DO ANO (QUATRO DÍGITOS, NÃO PODE SER NO FUTURO)
-    function validarAnoFundacao(ano) {
-      const anoAtual = new Date().getFullYear();
-      return ano && ano.length === 4 && parseInt(ano) <= anoAtual;
-    }
-
-    // Validação geral do formulário
-    (function () {
-      const form = document.getElementById('cadastroForm');
+            e.target.value = formatted;
+        });
+    </script>
+    
+    <script>
+          // Máscara e validação do CNPJ
+    document.addEventListener("DOMContentLoaded", () => {
       const cnpjInput = document.getElementById('cnpj');
-      const anoInput = document.getElementById('ano');
 
-      form.addEventListener('submit', function (e) {
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-        const confirmPasswordInput = document.getElementById('confirmPassword');
-        let validacaoCustomizada = true; // Flag para validar campos customizados
+      // forma cnpj
+      cnpjInput.addEventListener('input', function (e) {
+        let v = e.target.value.replace(/\D/g, '');
+        v = v.replace(/^(\d{2})(\d)/, '$1.$2');
+        v = v.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+        v = v.replace(/\.(\d{3})(\d)/, '.$1/$2');
+        v = v.replace(/(\d{4})(\d)/, '$1-$2');
+        e.target.value = v.substring(0, 18);
 
-        if (password !== confirmPassword) {
-          confirmPasswordInput.setCustomValidity('Senhas não coincidem');
-          validacaoCustomizada = false;
+        // min 14 números
+        const apenasnumeros = e.target.value.replace(/\D/g, '');
+        if (apenasnumeros.length < 14) {
+          cnpjInput.setCustomValidity('CNPJ inválido');
         } else {
-          confirmPasswordInput.setCustomValidity('');
-        }
-
-        if (!validarAnoFundacao(anoInput.value)) {
-          anoInput.setCustomValidity('Ano de Fundação inválido');
-          validacaoCustomizada = false;
-        } else {
-          anoInput.setCustomValidity('');
+          cnpjInput.setCustomValidity('');
         }
       });
-      });
-  </script>
+    });
+
+        // Validação geral do formulário (AJUSTADA PARA SUBMIT TRADICIONAL)
+        (function () {
+            const form = document.getElementById('cadastroForm');
+
+            form.addEventListener('submit', function (e) {
+
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                const confirmPasswordInput = document.getElementById('confirmPassword');
+
+                if (password !== confirmPassword) {
+                    confirmPasswordInput.setCustomValidity('Senhas não coincidem');
+                } else {
+                    confirmPasswordInput.setCustomValidity('');
+                }
+
+                if (!form.checkValidity()) {
+                    e.preventDefault(); // <-- IMPEDE O ENVIO SE INVÁLIDO
+                    e.stopPropagation();
+                    form.classList.add('was-validated');
+                    return;
+                }
+                
+              
+            });
+        })();
+    </script>
 
 </body>
 

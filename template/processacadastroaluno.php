@@ -38,7 +38,7 @@ try {
     VALUES (:nome_aluno, :email_aluno, :senha_aluno, :RM, :datanasc, :descricao, :curso, :habilidades, :telefone_aluno)";
 
     $stmt = $pdo->prepare($insercao);
-
+    
     // Vincular os parâmetros
     $stmt->bindParam(':nome_aluno', $nome);
     $stmt->bindParam(':email_aluno', $email);

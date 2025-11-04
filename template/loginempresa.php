@@ -58,11 +58,11 @@
               <h3 class="card-title text-center mb-3">Acesse sua conta para empresas</h3>
               <p class="text-center text-muted mb-4">Entre com seu CNPJ e senha para continuar na Freetecs</p>
 
-              <form id="loginForm" novalidate>
+              <form id="loginForm" method="POST" action="processaloginempresa.php" novalidate>
                 <!-- Campo CNPJ -->
                 <div class="form-group">
                   <label for="cnpj">CNPJ</label>
-                  <input type="text" class="form-control" id="cnpj" placeholder="00.000.000/0000-00" required>
+                  <input type="text" class="form-control" name="cnpj" id="cnpj" placeholder="00.000.000/0000-00" required>
                   <div class="invalid-feedback">
                     Digite um CNPJ válido com 14 números.
                   </div>
@@ -71,7 +71,7 @@
                 <!-- Campo Senha -->
                 <div class="form-group">
                   <label for="password">Senha</label>
-                  <input type="password" class="form-control" id="password" name="password" placeholder="Senha"
+                  <input type="password" class="form-control" id="password" name="senha_empresa" placeholder="Senha"
                     minlength="6" required>
                   <div class="invalid-feedback">
                     A senha precisa ter pelo menos 6 caracteres.
