@@ -81,14 +81,6 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="rm">Cpf</label>
-                  <input type="text" class="form-control" name="cpf" id="Cpf" placeholder="000.000.000-00" required>
-                  <div class="invalid-feedback">
-                    Digite um Cpf válido.
-                  </div>
-                </div>
-
-                <div class="form-group">
                   <label for="datanasc">Data de Nascimento</label>
                   <input type="date" class="form-control" name="datanasc" id="datanasc" required>
                   <div class="invalid-feedback">

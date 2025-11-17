@@ -1,28 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<?php
-session_start();
 
-if (!isset($_SESSION['id_aluno'])) {
-    die("Você precisa estar logado.");
-}
-
-try {
-    $pdo = new PDO("mysql:host=localhost;dbname=freetecs;charset=utf8", "root", "");
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $stmt = $pdo->prepare("SELECT * FROM aluno WHERE id_aluno = ?");
-    $stmt->execute([$_SESSION['id_aluno']]);
-    $aluno = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$aluno) {
-        die("Aluno não encontrado.");
-    }
-
-} catch (PDOException $e) {
-    die("Erro ao conectar: " . $e->getMessage());
-}
-?>
 <body>
 
     <?php require 'headeraluno.php' ?>
@@ -54,19 +32,24 @@ try {
                             </div>
 
                             <strong class="tituloperfil">Nome Completo:</strong>
-                            <p><?= htmlspecialchars($aluno['nome_aluno']) ?></p>
+                            <p>João da Silva Santos</p>
 
                             <strong>E-mail:</strong>
-                            <p><?= htmlspecialchars($aluno['email_aluno']) ?></p>
+                            <p>joaosilva@email.com</p>
 
                             <strong>Telefone:</strong>
-                            <p><?= htmlspecialchars($aluno['telefone_aluno']) ?></p>
+                            <p>(11) 98765-4321</p>
 
                             <strong>Curso:</strong>
-                            <p><?= htmlspecialchars($aluno['curso']) ?></p>
+                            <p>Informática Para Internet</p>
 
                             <strong>Descrição Pessoal:</strong>
-                            <p><?= htmlspecialchars($aluno['curso']) ?></p>
+                            <p>Olá! Meu nome é João, tenho 15 anos e curso o 1º ano do Ensino Médio integrado ao técnico
+                                em Informática para Internet na Etec MCM. Moro em Ribeirão Pires com meus pais e minha
+                                gata. Sou apaixonado por música e livros, e gosto de aprender coisas novas,
+                                especialmente na área de tecnologia e design. Busco oportunidades para desenvolver
+                                minhas habilidades, colaborar com projetos criativos e ganhar experiência prática.
+                            </p>
 
                             <strong>Habilidades e Competências</strong>
                             <p>Inglês intermediário; HTML básico; CSS básico; JavaScript básico; Word básico; Excel
@@ -138,14 +121,12 @@ try {
 
                         <div class="form-group mb-3">
                             <label for="descricao">Descrição Pessoal</label>
-                            <textarea class="form-control" id="descricao"
-                                rows="3">Olá! Meu nome é João, tenho 15 anos e curso o 1º ano do Ensino Médio integrado ao técnico em Informática para Internet na Etec MCM. Moro em Ribeirão Pires com meus pais e minha gata. Sou apaixonado por música e livros, e gosto de aprender coisas novas, especialmente na área de tecnologia e design. Busco oportunidades para desenvolver minhas habilidades, colaborar com projetos criativos e ganhar experiência prática.</textarea>
+                            <textarea class="form-control" id="descricao" rows="3">Olá! Meu nome é João, tenho 15 anos e curso o 1º ano do Ensino Médio integrado ao técnico em Informática para Internet na Etec MCM. Moro em Ribeirão Pires com meus pais e minha gata. Sou apaixonado por música e livros, e gosto de aprender coisas novas, especialmente na área de tecnologia e design. Busco oportunidades para desenvolver minhas habilidades, colaborar com projetos criativos e ganhar experiência prática.</textarea>
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="habilidades">Habilidades e Competências</label>
-                            <textarea class="form-control" id="habilidades"
-                                rows="2">Inglês intermediário; HTML básico; CSS básico; JavaScript básico; Word básico; Excel básico; Photoshop básico; Pontualidade; Criatividade; Trabalho em Equipe.</textarea>
+                            <textarea class="form-control" id="habilidades" rows="2">Inglês intermediário; HTML básico; CSS básico; JavaScript básico; Word básico; Excel básico; Photoshop básico; Pontualidade; Criatividade; Trabalho em Equipe.</textarea>
                         </div>
 
                         <hr>
@@ -170,13 +151,13 @@ try {
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="button" hr class="btn btn-primary">Salvar Alterações</button>
-                </div>
+                </div> 
             </div>
         </div>
     </div>
 
     <?php require 'head_footer.php' ?>
-
+    
     <!-- Scripts -->
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
