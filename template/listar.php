@@ -1,76 +1,50 @@
-<?php
+ <?php
     require 'conexao.php';
+ ?>
+
+ <?php
     $sql = "SELECT * FROM projeto";
     $stmt = $pdo->query($sql);
     while ($projeto = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo "ID: " . $projeto['id_projeto'] . "<br>";
-        echo "Nome: " . $projeto['nome_projeto'] . "<br>";
-        echo "Preço: R$" . $projeto['descrição_projeto'] . "<br>";
-        echo "Estoque: " . $projeto['estoque'] . "<br><br>";
-    }
-?>
+  ?>
+ 
+              <div class="modal fade" id="modalProjeto1" tabindex="-1" aria-labelledby="modalProjeto1Label"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    </div>
+                    <div class="modal-body">
+                      <h5><?php echo $projeto['nome_projeto']; ?></h5>
+                      <strong>Descrição:</strong>
+                      <p><?php echo $projeto['descrição_projeto']; ?></p>
+                      <strong>Requisitos Necessários:</strong>
+                      <p><?php echo $projeto['requisitos_necessários']; ?></p>
+                      <strong>Data Limite:</strong>
+                      <p><?php echo $projeto['data_limite']; ?></p>
+                      <strong>Carga horária estimada:</strong>
+                      <p><?php echo $projeto['qt_horas']; ?></p>
+                    </div>
 
- <section class="food_section layout_padding-bottom">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="container">
-      <div class="heading_container heading_center">
-        <h2 class="titulo">
-          Projetos Disponíveis
-        </h2>
-      </div>
-      <br>
-      <div class="container">
-        <div class="filters-content">
-          <div class="row grid">
+                    <div class="modal-footer">
+                      <div class="btn-box">
+                        <a style="color: white;" id="btnCadastrar" class="btn1">
+                          Candidatar-Se
+                        </a>
 
-            <div class="col-sm-6 col-lg-4 all pizza">
-              <div class="box">
-                <div>
-                  <div class="img-box">
-                    <img src="images/prancheta2.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>Projeto 1</h5>
-                    <p>
-                      Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      repellendus
-                      sed eaque
-                    </p>
-                    <div class="options">
-                      <a style=" width: 80px; background:transparent; text-decoration: none; color: inherit;"
-                        href="perfilpublicoempresa.php" class="link-empresa">
-                        <h6>empresa 1</h6>
-                      </a>
-                      <!-- Botão que abre o modal -->
-                      <a href="login.php">
-                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                          <g>
-                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                          </g>
-                        </svg>
-                      </a>
+                      </div>
+                      <div class="btn-box">
+                        <a style="color: white;" class="btn1" data-bs-dismiss="modal">
+                          Fechar
+                        </a>
+                      </div>
+
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-  </section>
+  <?php 
+    } // fim do while
+  ?>

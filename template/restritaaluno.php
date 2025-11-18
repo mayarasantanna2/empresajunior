@@ -26,40 +26,53 @@
         <div class="filters-content">
           <div class="row grid">
 
-            <div class="col-sm-6 col-lg-4 all pizza">
-              <div class="box">
-                <div>
-                  <div class="img-box">
-                    <img src="images/prancheta2.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>Sistema de Estoque para Mercado</h5>
-                    <p>
-                      O projeto consiste em criar um sistema web simples que permita registrar produtos, controlar
-                      entradas e saídas e gerar relatórios de estoque para um pequeno mercado de bairro.
-                    </p>
-                    <div class="options">
-                      <a style=" width: 80px; background:transparent; text-decoration: none; color: inherit;"
-                        href="perfilpublicoempresa.php" class="link-empresa">
-                        <h6>empresa 1</h6>
-                      </a>
+            <?php
+              $sql = "SELECT * FROM projeto";
+              $stmt = $pdo->query($sql);
+              while ($projeto = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            ?>
 
-                      <!-- Botão que abre o modal -->
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
-                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                          <g>
-                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                          </g>
-                        </svg>
-                      </a>
+                <div class="col-sm-6 col-lg-4 all pizza">
+                  <div class="box">
+                    <div>
+                      <div class="img-box">
+                        <img src="images/prancheta2.png" alt="">
+                      </div>
+
+                      <div class="detail-box">
+                        
+                            <h5><?php echo $projeto['nome_projeto']; ?></h5>
+
+                            <p><?php echo $projeto['descrição_projeto']; ?></p>
+
+                            <div class="options">
+                              <a style="width: 80px; background:transparent; text-decoration:none; color:inherit;"
+                                href="perfilpublicoempresa.php?id="
+                                class="link-empresa">
+                                <h6><?php echo $projeto['nome_empresa']; ?></h6>
+                              </a>
+
+                          <!-- Botão que abre o modal -->
+                          <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
+                            <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
+                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
+                              style="enable-background:new 0 0 448 448;" xml:space="preserve">
+                              <g>
+                                <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
+                    c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
+                              </g>
+                            </svg>
+                          </a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <?php 
+              } // fim do while
+            ?>
+
 
             <div class="modal fade" id="modalProjeto1" tabindex="-1" aria-labelledby="modalProjeto1Label"
               aria-hidden="true">
@@ -123,177 +136,6 @@
               </div>
             </div>
 
-            <div class="col-sm-6 col-lg-4 all burger">
-              <div class="box">
-                <div>
-                  <div class="img-box">
-                    <img src="images/prancheta2.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>
-                      projeto 2
-                    </h5>
-                    <p>
-                      Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      cupiditate quo, quisquam velit, magnam voluptatem
-                    </p>
-                    <div class="options">
-                      <h6>
-                        empresa 1
-                      </h6>
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
-                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                          <g>
-                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                          </g>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-6 col-lg-4 all pizza">
-              <div class="box">
-                <div>
-                  <div class="img-box">
-                    <img src="images/prancheta2.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>
-                      projeto 3
-                    </h5>
-                    <p>
-                      Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      cupiditate quo, quisquam velit, magnam voluptatem
-                    </p>
-                    <div class="options">
-                      <h6>
-                        empresa 3
-                      </h6>
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
-                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                          <g>
-                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                          </g>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 all pasta">
-              <div class="box">
-                <div>
-                  <div class="img-box">
-                    <img src="images/prancheta2.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>
-                      projeto 4
-                    </h5>
-                    <p>
-                      Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      cupiditate quo, quisquam velit, magnam voluptatem
-                    </p>
-                    <div class="options">
-                      <h6>
-                        empresa 2
-                      </h6>
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
-                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                          <g>
-                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                          </g>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 all fries">
-              <div class="box">
-                <div>
-                  <div class="img-box">
-                    <img src="images/prancheta2.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>
-                      projeto 5
-                    </h5>
-                    <p>
-                      Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      cupiditate quo, quisquam velit, magnam voluptatem
-                    </p>
-                    <div class="options">
-                      <h6>
-                        empresa 1
-                      </h6>
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
-                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                          <g>
-                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                          </g>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 all pizza">
-              <div class="box">
-                <div>
-                  <div class="img-box">
-                    <img src="images/prancheta2.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>
-                      projeto 6
-                    </h5>
-                    <p>
-                      Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      cupiditate quo, quisquam velit, magnam voluptatem
-                    </p>
-                    <div class="options">
-                      <h6>
-                        empresa 1
-                      </h6>
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
-                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                          <g>
-                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                          </g>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

@@ -59,7 +59,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item ">
-                <a class="nav-link" href="index.html">Início </a>
+                <a class="nav-link" href="index.php">Início </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#sobre">Sobre</a>
@@ -97,8 +97,6 @@
                   Transforme ideias em realidade com Freetecs: Estudantes se candidatam, participam de projetos de
                   empresas ainda recebem certificado por sua contribuição.
                 </h3>
-
-
                 <div class="btn-box">
                   <a href="login.php" class="btn1">
                     Entre
@@ -107,11 +105,105 @@
               </div>
             </div>
           </div>
-
-
     </section>
     <!-- end slider section -->
   </div>
+
+
+
+
+
+  <!-- listar projetos -->
+  <?php
+    require 'conexao.php';
+  ?>
+
+ <section class="food_section layout_padding-bottom">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2 class="titulo">
+          Projetos Disponíveis
+        </h2>
+      </div>
+      <br>
+      
+      <div class="container">
+        <div class="filters-content">
+          <div class="row grid">
+
+            <?php
+              $sql = "SELECT * FROM projeto";
+              $stmt = $pdo->query($sql);
+              while ($projeto = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            ?>
+
+                <div class="col-sm-6 col-lg-4 all pizza">
+                  <div class="box">
+                    <div>
+                      <div class="img-box">
+                        <img src="images/prancheta2.png" alt="">
+                      </div>
+
+                      
+                      <div class="detail-box">
+                        
+                            <h5><?php echo $projeto['nome_projeto']; ?></h5>
+
+                            <p><?php echo $projeto['descrição_projeto']; ?></p>
+
+                            <div class="options">
+                              <a style="width: 80px; background:transparent; text-decoration:none; color:inherit;"
+                                href="perfilpublicoempresa.php?id="
+                                class="link-empresa">
+                                <h6><?php echo $projeto['nome_empresa']; ?></h6>
+                              </a>
+
+                              <a href="login.php">
+                                <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
+                                  x="0px" y="0px" viewBox="0 0 448 448">
+                                  <g>
+                                    <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 
+                                    0-40 17.908-40 40s17.908 40 40 40h144v144c0 22.092 17.908 40 40 40s40-17.908 
+                                    40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z"/>
+                                  </g>
+                                </svg>
+                              </a>
+                            </div>
+
+                            <hr><br>
+
+                        <?php 
+                          } // fim do while
+                        ?>
+                      </div>
+
+
+
+                    </div>
+                  </div>
+                </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+  </section>
+  <!-- fim listar projetos -->
+
+
 
 
   
@@ -152,6 +244,10 @@
 
   <!-- end about section -->
 
+
+  
+
+
   <!-- client section -->
   <br>
   <br>
@@ -186,7 +282,7 @@
             <div class="box">
               <div class="detail-box">
                 <p>
-                  Planejamento e Documentação
+                  Back-end
                 </p>
                 <h6>
                   17 Anos
