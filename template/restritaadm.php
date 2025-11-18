@@ -27,6 +27,14 @@
         <div class="filters-content">
           <div class="row grid">
 
+          <?php
+            $sql = "SELECT * FROM projeto";
+            $stmt = $pdo->query($sql);
+            while ($projeto = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+              $id = $projeto['id_projeto'];
+          ?>
+
             <div class="col-sm-6 col-lg-4 all pizza">
               <div class="box">
                 <div>
@@ -34,17 +42,15 @@
                     <img src="images/prancheta2.png" alt="">
                   </div>
                   <div class="detail-box">
-                    <h5> Sistema de Estoque para Mercado
-                    </h5>
-                    <p>
-                      O projeto consiste em criar um sistema web simples que permita registrar produtos, controlar
-                      entradas e saídas e gerar relatórios de estoque para um pequeno mercado de bairro
-                    </p>
+
+                    <h5><?php echo $projeto['nome_projeto']; ?></h5>
+                    <p><?php echo $projeto['descrição_projeto']; ?></p>
+
                     <div class="options">
-                      <h6>empresa 1</h6>
+                      <h6><?php echo $projeto['nome_empresa']; ?></h6>
 
                       <!-- Botão que abre o modal -->
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto<?= $id ?>">
                         <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
                           style="enable-background:new 0 0 448 448;" xml:space="preserve">
@@ -70,19 +76,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                   </div>
                   <div class="modal-body">
-                    <h5>Sistema de Estoque para Mercado</h5>
-                    <strong>Descrição:</strong>
-                    <p>O projeto consiste em criar um sistema web simples que permita registrar produtos, controlar
-                      entradas e saídas e gerar relatórios de estoque para um pequeno mercado de bairro.</p>
-
-                    <strong>Requisitos Necessários:</strong>
-                    <p>Conhecimento em HTML, CSS, PHP e MySQL.</p>
-
-                    <strong>Data Limite:</strong>
-                    <p>10/12/2025</p>
-
-                    <strong>Carga horária estimada:</strong>
-                    <p>60 Horas</p>
+                      <h5><?php echo $projeto['nome_projeto']; ?></h5>
+                      <strong>Descrição:</strong>
+                      <p><?php echo $projeto['descrição_projeto']; ?></p>
+                      <strong>Requisitos Necessários:</strong>
+                      <p><?php echo $projeto['requisitos_necessários']; ?></p>
+                      <strong>Data Limite:</strong>
+                      <p><?php echo $projeto['data_limite']; ?></p>
+                      <strong>Carga horária estimada:</strong>
+                      <p><?php echo $projeto['qt_horas']; ?></p>
                   </div>
                   <div class="modal-footer">
                     <div class="btn-box">
@@ -240,111 +242,9 @@
               </div>
             </div>
 
-
-            <div class="col-sm-6 col-lg-4 all pizza">
-              <div class="box">
-                <div>
-                  <div class="img-box">
-                    <img src="images/prancheta2.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>
-                      projeto 2
-                    </h5>
-                    <p>
-                      Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      repellendus sed eaque Lorem ipsum dolor sit amet consectetur adipisicing elit. In animi neque
-                      accusantium dolorum sit consectetur facere ratione fugit, laudantium
-                    </p>
-                    <div class="options">
-                      <h6>
-                        empresa 1
-                      </h6>
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
-                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                          <g>
-                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                          </g>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-6 col-lg-4 all fries">
-              <div class="box">
-                <div>
-                  <div class="img-box">
-                    <img src="images/prancheta2.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>
-                      projeto 5
-                    </h5>
-                    <p>
-                      Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      repellendus sed eaque Lorem ipsum dolor sit amet consectetur adipisicing elit. In animi neque
-                      accusantium dolorum sit consectetur facere ratione fugit, laudantium 
-                    </p>
-                    <div class="options">
-                      <h6>
-                        empresa 1
-                      </h6>
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
-                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                          <g>
-                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                          </g>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-6 col-lg-4 all pizza">
-              <div class="box">
-                <div>
-                  <div class="img-box">
-                    <img src="images/prancheta2.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>
-                      projeto 6
-                    </h5>
-                    <p>
-                      Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                      repellendus sed eaque Lorem ipsum dolor sit amet consectetur adipisicing elit. In animi neque
-                      accusantium dolorum sit consectetur facere ratione fugit, laudantium
-                    </p>
-                    <div class="options">
-                      <h6>
-                        empresa 1
-                      </h6>
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto1">
-                        <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
-                          style="enable-background:new 0 0 448 448;" xml:space="preserve">
-                          <g>
-                            <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-                c0 22.092 17.908  40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
-                          </g>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <?php 
+            } // fim do while
+          ?>
           </div>
         </div>
       </div>

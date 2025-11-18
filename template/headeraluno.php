@@ -1,10 +1,20 @@
 <!-- header section strats -->
+  <?php
+    require 'conexao.php';
+  ?>
   <header class="header_section">
     <div class="container">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
         <a class="navbar-brand" href="restritaaluno.php">
-          <span>
-            <h2>Olá, Aluno</h2>
+           <span>
+              <?php
+                $sql = "SELECT nome_aluno FROM aluno";
+                $stmt = $pdo->query($sql);
+
+                while ($aluno = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  echo "<h2>Olá, " . htmlspecialchars($aluno['nome_aluno']) . "</h2>";
+                }
+              ?>
           </span>
         </a>
 
@@ -16,7 +26,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav  mx-auto ">
             <li class="nav-item ">
-              <a class="nav-link" href="index.html">Início </a>
+              <a class="nav-link" href="index.php">Início </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="perfilaluno.php">Seu Perfil</a>

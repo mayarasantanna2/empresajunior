@@ -1,4 +1,7 @@
 <!-- header section strats -->
+  <?php
+    require 'conexao.php';
+  ?>
   <header class="header_section">
     <div class="container">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -16,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav  mx-auto ">
             <li class="nav-item ">
-              <a class="nav-link" href="index.html">Início </a>
+              <a class="nav-link" href="index.php">Início </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="empresascadastradas.php">Empresas</a>
