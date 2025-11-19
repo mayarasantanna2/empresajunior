@@ -22,28 +22,24 @@
       </div>
       <br>
 
+      <?php
+        $sql = "SELECT * FROM empresa";
+        $stmt = $pdo->query($sql);
+        while ($empresa = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+              $id = $empresa['id_empresa'];
+      ?>
+
       <ol class="list-group list-group-numbered">
         <li class="list-group-item d-flex justify-content-between align-items-start">
           <div class="ms-2 me-auto">
-            <div class="fw-bold"> <a style="text-decoration: none; color: inherit;" href="perfilpublicoempresa.php">Empresa1</a></div>
-          </div>
-        </li>
-         <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="ms-2 me-auto">
-            <div class="fw-bold"> <a style="text-decoration: none; color: inherit;" href="perfilaluno.php">Empresa2</a></div>
-          </div>
-        </li>
-         <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="ms-2 me-auto">
-            <div class="fw-bold"> <a style="text-decoration: none; color: inherit;" href="perfilaluno.php">Empresa3</a></div>
-          </div>
-        </li>
-         <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="ms-2 me-auto">
-            <div class="fw-bold"> <a style="text-decoration: none; color: inherit;" href="perfilaluno.php">Empresa4</a></div>
+            <div class="fw-bold"> <a style="text-decoration: none; color: inherit;" href="perfilempresa.php"><?php echo $empresa['nome_empresa']; ?></a></div>
           </div>
         </li>
       </ol>
+      <?php 
+        } // fim do while
+      ?>
 
   </section>
 
