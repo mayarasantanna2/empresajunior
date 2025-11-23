@@ -3,7 +3,7 @@
 
 <body>
 
-    <?php require 'headeraluno.php' ?>
+    <?php require 'headeradm.php' ?>
 
     <!-- Perfil Section -->
     <section class="food_section layout_padding-bottom">

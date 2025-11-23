@@ -14,6 +14,14 @@
             </div>
             <br>
 
+
+            <?php
+                $sql = "SELECT * FROM empresa";
+                $stmt = $pdo->query($sql);
+                while ($empresa = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+                    $id = $empresa['id_empresa'];
+            ?>
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="box p-4" style="text-align: left;">
@@ -31,73 +39,48 @@
                                 </div>
                             </div>
 
-                            <strong class="tituloperfil">Nome da Empresa: </strong>
-                            <p>Empresa 1</p>
-
+                            <strong>Nome da Empresa: </strong>
+                            <p><?php echo $empresa['nome_empresa']; ?></p>
                             <strong>E-mail:</strong>
-                            <p>empresa1@email.com</p>
-
+                            <p><?php echo $empresa['email_empresa']; ?></p>
                             <strong>Telefone:</strong>
-                            <p>(11) 98765-4321</p>
-
+                            <p><?php echo $empresa['telefone_empresa']; ?></p>
                             <strong>Área de Atuação:</strong>
-                            <p>Tecnologia</p>
-
+                            <p><?php echo $empresa['area_de_atuacao']; ?></p>
                             <strong>Descrição Institucional:</strong>
-                            <p>
-                                A Empresa 1 é uma startup localizada no ABC Paulista, especializada em soluções digitais
-                                para microempreendedores e artesãos locais. Fundada em 2022, a empresa nasceu com o
-                                propósito de impulsionar pequenos negócios criativos por meio da tecnologia, conectando
-                                o talento artesanal ao comércio eletrônico.
-                            </p>
-                            <p>
-                                Nosso foco é oferecer plataformas acessíveis e intuitivas, que permitam que
-                                empreendedores sem conhecimento técnico possam divulgar e vender seus produtos online. A
-                                Criarte acredita que o futuro do comércio está na integração entre criatividade e
-                                inovação tecnológica, e trabalha diariamente para tornar o ambiente digital mais
-                                inclusivo e sustentável.
-                            </p>
-                            <p>
-                                Além disso, a empresa participa ativamente de projetos educacionais em parceria com
-                                ETECs, oferecendo oportunidades para alunos colocarem em prática seus conhecimentos em
-                                desenvolvimento web, design e banco de dados. Essa colaboração reforça nosso compromisso
-                                com a formação de novos talentos e com o fortalecimento do ecossistema local de
-                                tecnologia.
-                            </p>
-                            <p>
-                                Missão: Tornar o comércio digital acessível para todos os empreendedores criativos. <br>
-
-                                Visão: Ser referência em soluções tecnológicas para micro e pequenos negócios no Brasil.
-                                Valores: Inovação, colaboração, sustentabilidade e inclusão digital.
-                            </p>
+                            <p><?php echo $empresa['descricao_institucional']; ?></p>
                             <strong>Ano de Fundação:</strong>
-                            <p>2019</p>
+                            <p><?php echo $empresa['ano_de_fundacao']; ?></p>
                             <br>
                             <hr class="linha">
                             <br>
 
-
                             <h5>Informações Privadas</h5>
                             <br>
-
                             <strong>CNPJ</strong>
-                            <p>00.000.000/0000-00</p>
-
+                            <p><?php echo $empresa['CNPJ']; ?></p>
                             <strong>Senha:</strong>
-                            <p>********</p>
+                            <p><?php echo $empresa['senha_empresa']; ?></p>
 
                             <div class="btn-box">
-                                <a href="javascript:void(0)" class="btn1" data-bs-toggle="modal"
-                                    data-bs-target="#modalEditar">
+                                <a style="background: red; color: white;" class="btn1" data-bs-dismiss="modal">
+                                    Excluir
+                                </a>
+                                </div>
+
+                                <div class="btn-box">
+                                <a style="text-decoration: none;" href="javascript:void(0)" class="btn1" data-bs-toggle="modal" data-bs-target="#modalEditar">
                                     Editar
                                 </a>
-
                             </div>
 
                         </div>
                     </div>
                 </div>
             </div>
+            <?php 
+                } // fim do while
+            ?>
 
         </div>
     </section>
@@ -111,65 +94,60 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
 
+                <?php
+                    $sql = "SELECT * FROM empresa";
+                    $stmt = $pdo->query($sql);
+                    while ($empresa = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+                        $id = $empresa['id_empresa'];
+                ?>
+                <form action="processaedicaoempresa.php" method="POST">
+                
                 <div class="modal-body">
-                    <form>
-                        <div class="form-group mb-3">
-                            <label for="titulo">Título:</label>
-                            <input type="text" class="form-control" id="titulo" value="Empresa 1" required>
-                        </div>
+                    <input type="hidden" name="id_empresa" value="<?= $empresa['id_empresa']; ?>">
 
-                        <div class="form-group mb-3">
-                            <label for="email">E-mail</label>
-                            <input type="email" class="form-control" id="email" value="empresa1@email.com" required>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="telefone">Telefone</label>
-                            <input type="tel" class="form-control" id="telefone" value="(11) 98765-4321">
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="curso">Área de Atuação:</label>
-                            <input type="text" class="form-control" id="atuacao" value="Tecnologia">
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="descricaoi">Descrição Institucional</label>
-                            <textarea class="form-control" id="descricaoi" rows="3">
-A Empresa 1 é uma startup localizada no ABC Paulista, especializada em soluções digitais para microempreendedores e artesãos locais. Fundada em 2019, a empresa nasceu com o propósito de impulsionar pequenos negócios criativos por meio da tecnologia, conectando o talento artesanal ao comércio eletrônico.
-
-Nosso foco é oferecer plataformas acessíveis e intuitivas, que permitam que empreendedores sem conhecimento técnico possam divulgar e vender seus produtos online. A Criarte acredita que o futuro do comércio está na integração entre criatividade e inovação tecnológica, e trabalha diariamente para tornar o ambiente digital mais inclusivo e sustentável.
-
-Além disso, a empresa participa ativamente de projetos educacionais em parceria com ETECs, oferecendo oportunidades para alunos colocarem em prática seus conhecimentos em desenvolvimento web, design e banco de dados. Essa colaboração reforça nosso compromisso com a formação de novos talentos e com o fortalecimento do ecossistema local de tecnologia.
-
-Missão: Tornar o comércio digital acessível para todos os empreendedores criativos.
-Visão: Ser referência em soluções tecnológicas para micro e pequenos negócios no Brasil. Valores: Inovação, colaboração, sustentabilidade e inclusão digital.</textarea>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="ano">Ano de Fundação:</label>
-                            <input type="number" class="form-control" id="number" value="2019">
-                        </div>
-
-                        <hr>
-
-                        <div class="form-group mb-3">
-                            <label for="cnpj">CNPJ</label>
-                            <input type="text" class="form-control" id="cnpj" value="00.000.000/0000-00">
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="senha">Senha</label>
-                            <input type="password" class="form-control" id="senha" value="123456">
-                        </div>
-                    </form>
+                    <div class="form-group mb-3">
+                        <label for="titulo">Nome:</label>
+                        <input type="text" class="form-control" name="novo_nome" value="<?= $empresa['nome_empresa']; ?>">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="email">E-mail</label>
+                        <input type="email" class="form-control" name="novo_email" value="<?= $empresa['email_empresa']; ?>">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" class="form-control" name="novo_telefone" value="<?= $empresa['telefone_empresa']; ?>">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="curso">Área de Atuação:</label>
+                        <input type="text" class="form-control" name="nova_area_de_atuacao" value="<?= $empresa['area_de_atuacao']; ?>">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="descricaoi">Descrição Institucional</label>
+                        <textarea class="form-control" name="nova_descricao_institucional" rows="3"><?= $empresa['descricao_institucional']; ?></textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="ano">Ano de Fundação:</label>
+                        <input type="number" class="form-control" name="novo_ano_de_fundacao" value="<?= $empresa['ano_de_fundacao']; ?>">
+                    </div>
+                    <hr>
+                    <div class="form-group mb-3">
+                        <label for="cnpj">CNPJ</label>
+                        <input type="text" class="form-control" name="novo_CNPJ" value="<?= $empresa['CNPJ']; ?>">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="senha">Senha</label>
+                        <input type="password" class="form-control" name="nova_senha" placeholder="Deixe vazio para não alterar a senha">
+                    </div>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" hr class="btn btn-primary">Salvar Alterações</button>
-                    
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                 </div>
+            </form>
+            <?php 
+                    } // fim do while
+                ?>
             </div>
         </div>
     </div>

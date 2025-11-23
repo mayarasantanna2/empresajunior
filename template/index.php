@@ -45,7 +45,7 @@
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="index.php">
             <span>
               <img class="imglogo" src="images/logo.png" alt="">
             </span>
@@ -155,7 +155,7 @@
                         
                             <h5><?php echo $projeto['nome_projeto']; ?></h5>
 
-                            <p><?php echo $projeto['descrição_projeto']; ?></p>
+                            <p><?php echo $projeto['descricao_do_projeto']; ?></p>
 
                             <div class="options">
                               <a style="width: 80px; background:transparent; text-decoration:none; color:inherit;"

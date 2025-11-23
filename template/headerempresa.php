@@ -34,9 +34,6 @@
             <li class="nav-item">
               <a class="nav-link" href="alunoscandidatados.php">Alunos</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contato.html">Contato</a>
-            </li>
           </ul>
         </div>
     </div>

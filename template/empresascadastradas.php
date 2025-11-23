@@ -30,13 +30,13 @@
               $id = $empresa['id_empresa'];
       ?>
 
-      <ol class="list-group list-group-numbered">
+      <ul class="list-group list-group-numbered">
         <li class="list-group-item d-flex justify-content-between align-items-start">
           <div class="ms-2 me-auto">
-            <div class="fw-bold"> <a style="text-decoration: none; color: inherit;" href="perfilempresa.php"><?php echo $empresa['nome_empresa']; ?></a></div>
+            <div class="fw-bold"> <a style="text-decoration: none; color: inherit;" href="perfilempresaparaadm.php"><?php echo $empresa['nome_empresa']; ?></a></div>
           </div>
         </li>
-      </ol>
+        </ul>
       <?php 
         } // fim do while
       ?>

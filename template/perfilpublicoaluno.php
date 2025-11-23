@@ -3,43 +3,7 @@
 
 <body>
 
-    <!-- Header -->
-    <header class="header_section">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg custom_nav-container ">
-                <a class="navbar-brand" href="restritaaluno.php">
-                    <span>
-                        <h2>Olá, Empresa 1</h2>
-                    </span>
-                </a>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class=""> </span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav  mx-auto ">
-                        <li class="nav-item ">
-                            <a class="nav-link" href="index.html">Início </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="restritaaluno.php">Projetos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="perfilempresa.php"> Perfil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contato.html">Contato</a>
-                        </li>
-                    </ul>
-                </div>
-        </div>
-        </nav>
-        </div>
-    </header>
-    <!-- end header -->
+    <?php require 'headerempresa.php' ?>
 
 
     <!-- Perfil Section -->
@@ -51,6 +15,13 @@
             </div>
             <br>
 
+            <?php
+                $sql = "SELECT * FROM aluno";
+                $stmt = $pdo->query($sql);
+                while ($aluno = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+                    $id = $aluno['id_aluno'];
+            ?>
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="box p-4" style="text-align: left;">
@@ -63,35 +34,18 @@
 
                                 <div style="text-align:left;">
                                     <br>
-
-                                    <strong class="tituloperfil">Nome Completo:</strong>
-                                    <p>João da Silva Santos</p>
-
+                                    <strong>Nome Completo:</strong>
+                                    <p><?php echo $aluno['nome_aluno']; ?></p>
                                     <strong>E-mail:</strong>
-                                    <p>joaosilva@email.com</p>
-
+                                    <p><?php echo $aluno['email_aluno']; ?></p>
                                     <strong>Telefone:</strong>
-                                    <p>(11) 98765-4321</p>
-
+                                    <p><?php echo $aluno['telefone_aluno']; ?></p>
                                     <strong>Curso:</strong>
-                                    <p>Informática Para Internet</p>
-
+                                    <p><?php echo $aluno['curso']; ?></p>
                                     <strong>Descrição Pessoal:</strong>
-                                    <p>Olá! Meu nome é João, tenho 15 anos e curso o 1º ano do Ensino Médio integrado ao
-                                        técnico
-                                        em Informática para Internet na Etec MCM. Moro em Ribeirão Pires com meus pais e
-                                        minha
-                                        gata. Sou apaixonado por música e livros, e gosto de aprender coisas novas,
-                                        especialmente na área de tecnologia e design. Busco oportunidades para
-                                        desenvolver
-                                        minhas habilidades, colaborar com projetos criativos e ganhar experiência
-                                        prática.
-                                    </p>
-
+                                    <p><?php echo $aluno['descricao']; ?></p>
                                     <strong>Habilidades e Competências</strong>
-                                    <p>Inglês intermediário; HTML básico; CSS básico; JavaScript básico; Word básico;
-                                        Excel
-                                        básico; Photoshop básico; Pontualidade; Criatividade; Trabalho em Equipe.</p>
+                                    <p><?php echo $aluno['habilidades']; ?></p>
                                     <br>
                                      </div>
                                 </div>
@@ -100,6 +54,10 @@
                     </div>
 
                 </div>
+
+            <?php 
+                } // fim do while
+            ?>
     </section>
 
     <?php require 'head_footer.php' ?>

@@ -30,9 +30,9 @@
           <?php
             $sql = "SELECT * FROM projeto";
             $stmt = $pdo->query($sql);
+
             while ($projeto = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
-              $id = $projeto['id_projeto'];
           ?>
 
             <div class="col-sm-6 col-lg-4 all pizza">
@@ -44,13 +44,13 @@
                   <div class="detail-box">
 
                     <h5><?php echo $projeto['nome_projeto']; ?></h5>
-                    <p><?php echo $projeto['descrição_projeto']; ?></p>
+                    <p><?php echo $projeto['descricao_do_projeto']; ?></p>
 
                     <div class="options">
                       <h6><?php echo $projeto['nome_empresa']; ?></h6>
 
                       <!-- Botão que abre o modal -->
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto<?= $id ?>">
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto<?php echo $projeto['id_projeto']; ?>">
                         <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
                           style="enable-background:new 0 0 448 448;" xml:space="preserve">
@@ -78,9 +78,9 @@
                   <div class="modal-body">
                       <h5><?php echo $projeto['nome_projeto']; ?></h5>
                       <strong>Descrição:</strong>
-                      <p><?php echo $projeto['descrição_projeto']; ?></p>
+                      <p><?php echo $projeto['descricao_do_projeto']; ?></p>
                       <strong>Requisitos Necessários:</strong>
-                      <p><?php echo $projeto['requisitos_necessários']; ?></p>
+                      <p><?php echo $projeto['requisitos_necessarios']; ?></p>
                       <strong>Data Limite:</strong>
                       <p><?php echo $projeto['data_limite']; ?></p>
                       <strong>Carga horária estimada:</strong>

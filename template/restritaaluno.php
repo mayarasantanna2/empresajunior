@@ -43,7 +43,7 @@
                      
                             <h5><?php echo $projeto['nome_projeto']; ?></h5>
 
-                            <p><?php echo $projeto['descrição_projeto']; ?></p>
+                            <p><?php echo $projeto['descricao_do_projeto']; ?></p>
 
                             <div class="options">
                               <a style="width: 80px; background:transparent; text-decoration:none; color:inherit;"
@@ -80,9 +80,9 @@
                   <div class="modal-body">
                       <h5><?php echo $projeto['nome_projeto']; ?></h5>
                       <strong>Descrição:</strong>
-                      <p><?php echo $projeto['descrição_projeto']; ?></p>
+                      <p><?php echo $projeto['descricao_do_projeto']; ?></p>
                       <strong>Requisitos Necessários:</strong>
-                      <p><?php echo $projeto['requisitos_necessários']; ?></p>
+                      <p><?php echo $projeto['requisitos_necessarios']; ?></p>
                       <strong>Data Limite:</strong>
                       <p><?php echo $projeto['data_limite']; ?></p>
                       <strong>Carga horária estimada:</strong>

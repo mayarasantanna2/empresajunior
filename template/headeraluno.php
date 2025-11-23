@@ -31,10 +31,6 @@
             <li class="nav-item">
               <a class="nav-link" href="perfilaluno.php">Seu Perfil</a>
             </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" href="contato.html">Contato</a>
-            </li>
           </ul>
         </div>
     </div>

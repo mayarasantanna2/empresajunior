@@ -18,10 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarMenu">
           <ul class="navbar-nav  mx-auto ">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Início</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contato.html">Contato</a>
+              <a class="nav-link" href="index.php">Início</a>
             </li>
           </ul>
 

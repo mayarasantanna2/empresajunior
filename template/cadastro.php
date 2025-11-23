@@ -60,7 +60,7 @@
                 <div class="form-group">
                   <label for="email">Email</label>
                   <input type="email" class="form-control" name="email_aluno" id="email_aluno"
-                    placeholder="email@empresa.com" required>
+                    placeholder="email@aluno.com" required>
                   <div class="invalid-feedback">
                     Digite um email válido.
                   </div>

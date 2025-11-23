@@ -34,11 +34,23 @@
           <div class="row grid">
 
           <?php
-            $sql = "SELECT * FROM projeto";
+            $sql = "
+            SELECT 
+            projeto.nome_projeto,
+            projeto.descricao_do_projeto,
+            empresa.nome_empresa
+            FROM projeto
+            LEFT JOIN empresa ON projeto.id_empresa = empresa.id_empresa
+            ";
+
             $stmt = $pdo->query($sql);
+
+            if ($stmt->rowCount() == 0) {
+              echo "<p>Nenhum projeto encontrado.</p>";
+            }
+
             while ($projeto = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
-              $id = $projeto['id_projeto'];
           ?>
 
             <div class="col-sm-6 col-lg-4 all pizza">
@@ -50,10 +62,9 @@
                   <div class="detail-box">
 
                     <h5><?php echo $projeto['nome_projeto']; ?></h5>
-                    <p><?php echo $projeto['descrição_projeto']; ?></p>
+                    <p><?php echo $projeto['descricao_do_projeto']; ?></p>
                     
                     <div class="options">
-                      <h6><?php echo $projeto['nome_empresa']; ?></h6>
 
                       <!-- Botão que abre o modal -->
                       <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto<?= $id ?>">
@@ -62,7 +73,7 @@
                           style="enable-background:new 0 0 448 448;" xml:space="preserve">
                           <g>
                             <path d="M408 184H264V40c0-22.092-17.908-40-40-40s-40 17.908-40 40v144H40c-22.092 0-40 17.908-40 40s17.908 40 40 40h144v144
-                c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
+                            c0 22.092 17.908 40 40 40s40-17.908 40-40V264h144c22.092 0 40-17.908 40-40s-17.908-40-40-40z" />
                           </g>
                         </svg>
                       </a>
@@ -83,9 +94,9 @@
                   <div class="modal-body">
                       <h5><?php echo $projeto['nome_projeto']; ?></h5>
                       <strong>Descrição:</strong>
-                      <p><?php echo $projeto['descrição_projeto']; ?></p>
+                      <p><?php echo $projeto['descricao_do_projeto']; ?></p>
                       <strong>Requisitos Necessários:</strong>
-                      <p><?php echo $projeto['requisitos_necessários']; ?></p>
+                      <p><?php echo $projeto['requisitos_necessarios']; ?></p>
                       <strong>Data Limite:</strong>
                       <p><?php echo $projeto['data_limite']; ?></p>
                       <strong>Carga horária estimada:</strong>
@@ -134,12 +145,12 @@
 
                       <div class="form-group mb-3">
                         <label>Descrição</label>
-                        <textarea class="form-control" rows="3"><?= $projeto['descrição_projeto']; ?></textarea>
+                        <textarea class="form-control" rows="3"><?= $projeto['descricao_do_projeto']; ?></textarea>
                       </div>
 
                       <div class="form-group mb-3">
                         <label>Requisitos Necessários</label>
-                        <input type="text" class="form-control" value="<?= $projeto['requisitos_necessários']; ?>">
+                        <input type="text" class="form-control" value="<?= $projeto['requisitos_necessarios']; ?>">
                       </div>
 
                       <div class="form-group mb-3">
@@ -195,36 +206,36 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
           </div>
           <div class="modal-body">
-            <form id="formCadastrarProjeto">
+            <form id="formCadastrarProjeto" action="cadastroprojeto.php" METHOD="POST">
               <div class="mb-3">
                 <label for="tituloProjeto" class="form-label">Título do Projeto</label>
                 <input type="text" class="form-control" id="tituloProjeto" placeholder="Digite o título do projeto"
-                  required>
+                  required name="nome_projeto">
               </div>
               <div class="mb-3">
                 <label for="descricaoProjeto" class="form-label">Descrição</label>
                 <textarea class="form-control" id="descricaoProjeto" rows="3" placeholder="Digite a Descrição do Projeto"
-                  required></textarea>
+                  required name="descricao_do_projeto"></textarea>
               </div>
               <div class="mb-3">
                 <label for="requisitosProjeto" class="form-label">Requisitos Necessários</label>
                 <input type="text" class="form-control" id="requisitosProjeto" placeholder="Ex: HTML, CSS, PHP..."
-                  required>
+                  required name="requisitos_necessarios">
               </div>
               <div class="mb-3">
                 <label for="dataLimite" class="form-label">Data Limite</label>
-                <input type="date" class="form-control" id="dataLimite" required>
+                <input type="date" class="form-control" id="dataLimite" required name="data_limite">
               </div>
               <div class="mb-3">
                 <label for="cargaHoraria" class="form-label">Carga Horária Estimada (em horas)</label>
-                <input type="number" class="form-control" id="cargaHoraria" min="1" required>
+                <input type="number" class="form-control" id="cargaHoraria" min="1" required name="qt_horas">
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <div class="btn-box">
               <a class="btn1" data-bs-dismiss="modal" style="color:white;">Cancelar</a>
-              <a style="text-decoration: none;" class="btn1" href="#" style="color:white;" onclick="salvarProjeto()">Cadastrar</a>
+              <button id="modalOkBtn" type="submit" class="btn btn-primary btn-block" form="formCadastrarProjeto">Cadastrar</button>
             </div>
           </div>
         </div>
@@ -235,8 +246,6 @@
   </section>
 
   <?php require 'head_footer.php' ?>
-
-  <!-- end food section -->
 
   <script>
     const uploadInput = document.getElementById('profileUpload');
