@@ -64,11 +64,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="#sobre">Sobre</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contato.html">Contato</a>
-              </li>
-
-
+              
             </ul>
             <div class="user_option">
               <div class="dropdown">
