@@ -14,12 +14,9 @@
     
     $stmt->bindParam(':email', $email_aluno)?? '';
     
-    // Executa a consulta
     $stmt->execute();
     
-    // Obtém o resultado
     $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-    // ----- INÍCIO DO DEBUG -----
     if (empty($email_aluno) || empty($senha_digitada)) {
         echo "ERRO FATAL: E-mail ou Senha VAZIOS. Verifique o 'name' do formulário HTML.";
     }
@@ -38,7 +35,6 @@
         }
     }
     echo "<hr>";
-    // 6. Bloco de verificação de sucesso
     if ($resultado) {
         $hash_do_banco = $resultado['senha_aluno'];
 
@@ -54,7 +50,5 @@
         }
     } 
     
-     //$_SESSION['login_error'] = 'E-mail ou senha incorretos.';
-    //header('Location: index.html');
-    //exit();
+
 ?>

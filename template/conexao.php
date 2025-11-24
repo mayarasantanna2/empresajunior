@@ -1,6 +1,4 @@
 <?php
-// Arquivo: conexao.php
-
 $host = 'localhost';
 $dbname = 'freetecs';
 $user = 'root';
@@ -10,7 +8,7 @@ try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
     
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
+    echo "Deu certo";
 
 } catch (PDOException $e) {
     
