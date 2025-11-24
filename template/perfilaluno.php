@@ -63,9 +63,12 @@
                             <p><?php echo $aluno['senha_aluno']; ?></p>
                             
                                 <div class="btn-box">
-                                <a style="background: red; color: white;" class="btn1" data-bs-dismiss="modal">
+                                 <form action="deletealuno.php" method="POST"> 
+                                        <input type="hidden" name="id" value="<?php echo $aluno['id_aluno']; ?> " > 
+                                <button  type="submit" class="btn btn-danger rounded-pill" data-bs-dismiss="modal">
                                     Excluir
-                                </a>
+                </button>
+                </form>
                                 </div>
 
                                 <div class="btn-box">

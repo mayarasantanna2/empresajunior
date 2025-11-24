@@ -63,9 +63,12 @@
                             <p><?php echo $empresa['senha_empresa']; ?></p>
 
                             <div class="btn-box">
-                                <a style="background: red; color: white;" class="btn1" data-bs-dismiss="modal">
+                                <form action="deleteempresa.php" method="POST">
+                                     <input type="hidden" name="id" value="<?php echo $empresa['id_empresa']; ?> " > 
+                                <button  type="submit" class="btn btn-danger rounded-pill" data-bs-dismiss="modal">
                                     Excluir
-                                </a>
+                </button>
+                </form>
                                 </div>
 
                                 <div class="btn-box">
