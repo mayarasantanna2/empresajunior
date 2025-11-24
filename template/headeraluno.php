@@ -25,7 +25,7 @@ $aluno = $stmt->fetch(PDO::FETCH_ASSOC);
       
       <a class="navbar-brand" href="restritaaluno.php">
         <span>
-          Olá, <?php echo htmlspecialchars($aluno['nome_aluno']); ?>
+          <h2>Olá, <?php echo htmlspecialchars($aluno['nome_aluno']); ?></h2>
         </span>
       </a>
 
