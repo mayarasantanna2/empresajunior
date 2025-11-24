@@ -7,14 +7,23 @@
       <nav class="navbar navbar-expand-lg custom_nav-container ">
         <a class="navbar-brand" href="restritaaluno.php">
            <span>
-              <?php
-                $sql = "SELECT nome_aluno FROM aluno";
-                $stmt = $pdo->query($sql);
+           <?php
+session_start();
+require 'conexao.php';
 
-                while ($aluno = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                  echo "<h2>Olá, " . htmlspecialchars($aluno['nome_aluno']) . "</h2>";
-                }
-              ?>
+if (!isset($_SESSION['id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$id = $_SESSION['id'];
+
+$sql = "SELECT nome_aluno FROM aluno WHERE id_aluno = :id";
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':id', $id);
+$stmt->execute();
+$aluno = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
           </span>
         </a>
 
