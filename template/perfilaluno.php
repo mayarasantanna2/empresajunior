@@ -3,7 +3,18 @@
 
 <body>
 
-    <?php require 'headeraluno.php' ?>
+    <?php
+    session_start();
+    require 'headeraluno.php';
+    require 'conexao.php';
+
+    // Se não estiver logado, redireciona
+    if (!isset($_SESSION['id'])) {
+        header("Location: login.php");
+        exit;
+    }
+    $id = $_SESSION['id'];
+    ?>
 
     <!-- Perfil Section -->
     <section class="food_section layout_padding-bottom">
@@ -15,11 +26,11 @@
             <br>
 
             <?php
-                $sql = "SELECT * FROM aluno";
-                $stmt = $pdo->query($sql);
-                while ($aluno = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-                    $id = $aluno['id_aluno'];
+                $sql = "SELECT * FROM aluno WHERE id_aluno = :id LIMIT 1";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':id', $id);
+                $stmt->execute();
+                $aluno = $stmt->fetch(PDO::FETCH_ASSOC);
             ?>
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -81,10 +92,6 @@
                     </div>
                 </div>
             </div>
-            <?php 
-                } // fim do while
-            ?>
-
         </div>
     </section>
 
@@ -98,11 +105,11 @@
                 </div>
 
                 <?php
-                    $sql = "SELECT * FROM aluno";
-                    $stmt = $pdo->query($sql);
-                    while ($aluno = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-                        $id = $aluno['id_aluno'];
+                    $sql = "SELECT * FROM aluno WHERE id_aluno = :id LIMIT 1";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->bindParam(':id', $id);
+                    $stmt->execute();
+                    $aluno = $stmt->fetch(PDO::FETCH_ASSOC);
                 ?>
                 <form action="processaedicaoaluno.php" method="POST"> 
                 <div class="modal-body">
@@ -152,9 +159,6 @@
                     <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                 </div> 
                 </form>
-                <?php 
-                    } // fim do while
-                ?>
             </div>
         </div>
     </div>
