@@ -3,9 +3,20 @@
 
 <body>
 
-    <?php require 'headeradm.php' ?>
+    <?php
+        session_start();
+        require 'headerempresa.php';
+        require 'conexao.php';
 
-    <!-- Perfil Section -->
+        // Se não estiver logado, redireciona. Usando 'id_empresa' padronizado.
+        if (!isset($_SESSION['id_empresa'])) {
+            header("Location: login.php");
+            exit;
+        }
+        // Variável $id agora guarda o ID da empresa logada.
+        $id = $_SESSION['id_empresa'];
+    ?>
+
     <section class="food_section layout_padding-bottom">
         <div class="container">
             <div class="heading_container heading_center">
@@ -16,11 +27,11 @@
 
 
             <?php
-                $sql = "SELECT * FROM empresa";
-                $stmt = $pdo->query($sql);
-                while ($empresa = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-                    $id = $empresa['id_empresa'];
+                $sql = "SELECT * FROM empresa WHERE id_empresa = :id LIMIT 1";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':id', $id);
+                $stmt->execute();
+                $empresa = $stmt->fetch(PDO::FETCH_ASSOC);
             ?>
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -59,16 +70,17 @@
                             <br>
                             <strong>CNPJ</strong>
                             <p><?php echo $empresa['CNPJ']; ?></p>
-                            <strong>Senha:</strong>
-                            <p><?php echo $empresa['senha_empresa']; ?></p>
+                            <strong>Senha (Hash no Banco):</strong>
+                            <p>[A senha é uma hash, não deve ser exibida]</p> 
+                            
+                            <div class="btn-box d-flex justify-content-between mt-4">
+                                <form action="deleteempresa.php" method="POST" onsubmit="return confirm('ATENÇÃO: Sua conta e todos os projetos serão PERMANENTEMENTE excluídos. Tem certeza?');">
+                                    <input type="hidden" name="id" value="<?php echo $empresa['id_empresa']; ?>"> 
+                                    <button type="submit" class="btn btn-danger rounded-pill">
+                                        Excluir Conta
+                                    </button>
+                                </form>
 
-                            <div class="btn-box">
-                                <a style="background: red; color: white;" class="btn1" data-bs-dismiss="modal">
-                                    Excluir
-                                </a>
-                                </div>
-
-                                <div class="btn-box">
                                 <a style="text-decoration: none;" href="javascript:void(0)" class="btn1" data-bs-toggle="modal" data-bs-target="#modalEditar">
                                     Editar
                                 </a>
@@ -78,14 +90,9 @@
                     </div>
                 </div>
             </div>
-            <?php 
-                } // fim do while
-            ?>
-
         </div>
     </section>
 
-    <!-- Modal de Edição -->
     <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content" style="border-radius: 15px;">
@@ -95,11 +102,12 @@
                 </div>
 
                 <?php
-                    $sql = "SELECT * FROM empresa";
-                    $stmt = $pdo->query($sql);
-                    while ($empresa = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-                        $id = $empresa['id_empresa'];
+                    // Recarrega os dados para garantir que estão atualizados (opcional, mas seguro)
+                    $sql = "SELECT * FROM empresa WHERE id_empresa = :id LIMIT 1";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->bindParam(':id', $id);
+                    $stmt->execute();
+                    $empresa = $stmt->fetch(PDO::FETCH_ASSOC);
                 ?>
                 <form action="processaedicaoempresa.php" method="POST">
                 
@@ -108,32 +116,32 @@
 
                     <div class="form-group mb-3">
                         <label for="titulo">Nome:</label>
-                        <input type="text" class="form-control" name="novo_nome" value="<?= $empresa['nome_empresa']; ?>">
+                        <input type="text" class="form-control" name="novo_nome" value="<?= htmlspecialchars($empresa['nome_empresa']); ?>">
                     </div>
                     <div class="form-group mb-3">
                         <label for="email">E-mail</label>
-                        <input type="email" class="form-control" name="novo_email" value="<?= $empresa['email_empresa']; ?>">
+                        <input type="email" class="form-control" name="novo_email" value="<?= htmlspecialchars($empresa['email_empresa']); ?>">
                     </div>
                     <div class="form-group mb-3">
                         <label for="telefone">Telefone</label>
-                        <input type="tel" class="form-control" name="novo_telefone" value="<?= $empresa['telefone_empresa']; ?>">
+                        <input type="tel" class="form-control" name="novo_telefone" value="<?= htmlspecialchars($empresa['telefone_empresa']); ?>">
                     </div>
                     <div class="form-group mb-3">
                         <label for="curso">Área de Atuação:</label>
-                        <input type="text" class="form-control" name="nova_area_de_atuacao" value="<?= $empresa['area_de_atuacao']; ?>">
+                        <input type="text" class="form-control" name="nova_area_de_atuacao" value="<?= htmlspecialchars($empresa['area_de_atuacao']); ?>">
                     </div>
                     <div class="form-group mb-3">
                         <label for="descricaoi">Descrição Institucional</label>
-                        <textarea class="form-control" name="nova_descricao_institucional" rows="3"><?= $empresa['descricao_institucional']; ?></textarea>
+                        <textarea class="form-control" name="nova_descricao_institucional" rows="3"><?= htmlspecialchars($empresa['descricao_institucional']); ?></textarea>
                     </div>
                     <div class="form-group mb-3">
                         <label for="ano">Ano de Fundação:</label>
-                        <input type="number" class="form-control" name="novo_ano_de_fundacao" value="<?= $empresa['ano_de_fundacao']; ?>">
+                        <input type="number" class="form-control" name="novo_ano_de_fundacao" value="<?= htmlspecialchars($empresa['ano_de_fundacao']); ?>">
                     </div>
                     <hr>
                     <div class="form-group mb-3">
                         <label for="cnpj">CNPJ</label>
-                        <input type="text" class="form-control" name="novo_CNPJ" value="<?= $empresa['CNPJ']; ?>">
+                        <input type="text" class="form-control" name="novo_CNPJ" value="<?= htmlspecialchars($empresa['CNPJ']); ?>">
                     </div>
                     <div class="form-group mb-3">
                         <label for="senha">Senha</label>
@@ -145,16 +153,12 @@
                     <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                 </div>
             </form>
-            <?php 
-                    } // fim do while
-                ?>
             </div>
         </div>
     </div>
 
     <?php require 'head_footer.php' ?>
 
-    <!-- Scripts -->
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script>

@@ -28,7 +28,14 @@
           <div class="row grid">
 
           <?php
-            $sql = "SELECT * FROM projeto";
+            $sql = "
+            SELECT 
+                  projeto.*, 
+                  empresa.nome_empresa,
+                  empresa.id_empresa
+              FROM projeto
+              LEFT JOIN empresa ON projeto.id_empresa = empresa.id_empresa
+              ";
             $stmt = $pdo->query($sql);
 
             while ($projeto = $stmt->fetch(PDO::FETCH_ASSOC)) {

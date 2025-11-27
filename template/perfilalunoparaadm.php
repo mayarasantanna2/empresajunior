@@ -3,23 +3,34 @@
 
 <body>
 
-    <?php require 'headeradm.php' ?>
+    <?php
+    session_start();
+    require 'headeradm.php';
+    require 'conexao.php';
+
+    // Se não estiver logado, redireciona
+    if (!isset($_SESSION['id'])) {
+        header("Location: login.php");
+        exit;
+    }
+    $id = $_SESSION['id'];
+    ?>
 
     <!-- Perfil Section -->
     <section class="food_section layout_padding-bottom">
         <div class="container">
             <div class="heading_container heading_center">
                 <br><br><br><br><br>
-                <h2>Seu Perfil</h2>
+                <h2>Perfil do Aluno</h2>
             </div>
             <br>
 
             <?php
-                $sql = "SELECT * FROM aluno";
-                $stmt = $pdo->query($sql);
-                while ($aluno = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-                    $id = $aluno['id_aluno'];
+                $sql = "SELECT * FROM aluno WHERE id_aluno = :id LIMIT 1";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':id', $id);
+                $stmt->execute();
+                $aluno = $stmt->fetch(PDO::FETCH_ASSOC);
             ?>
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -63,9 +74,12 @@
                             <p><?php echo $aluno['senha_aluno']; ?></p>
                             
                                 <div class="btn-box">
-                                <a style="background: red; color: white;" class="btn1" data-bs-dismiss="modal">
+                                 <form action="deletealuno.php" method="POST"> 
+                                        <input type="hidden" name="id" value="<?php echo $aluno['id_aluno']; ?> " > 
+                                <button  type="submit" class="btn btn-danger rounded-pill" data-bs-dismiss="modal">
                                     Excluir
-                                </a>
+                                </button>
+                                </form>
                                 </div>
 
                                 <div class="btn-box">
@@ -78,10 +92,6 @@
                     </div>
                 </div>
             </div>
-            <?php 
-                } // fim do while
-            ?>
-
         </div>
     </section>
 
@@ -95,11 +105,11 @@
                 </div>
 
                 <?php
-                    $sql = "SELECT * FROM aluno";
-                    $stmt = $pdo->query($sql);
-                    while ($aluno = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-                        $id = $aluno['id_aluno'];
+                    $sql = "SELECT * FROM aluno WHERE id_aluno = :id LIMIT 1";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->bindParam(':id', $id);
+                    $stmt->execute();
+                    $aluno = $stmt->fetch(PDO::FETCH_ASSOC);
                 ?>
                 <form action="processaedicaoaluno.php" method="POST"> 
                 <div class="modal-body">
@@ -149,9 +159,6 @@
                     <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                 </div> 
                 </form>
-                <?php 
-                    } // fim do while
-                ?>
             </div>
         </div>
     </div>
