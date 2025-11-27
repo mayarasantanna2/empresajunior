@@ -24,7 +24,7 @@
         echo "ERRO FATAL: Cnpj ou Senha VAZIOS. Verifique o 'name' do formulário HTML.";
     }
 
-    echo "1. E-mail recebido: " . $cnpj . "<br>";
+    echo "1. Cnpj recebido: " . $cnpj . "<br>";
     if ($stmt->rowCount() == 0) {
         echo "2. USUÁRIO NÃO ENCONTRADO no banco de dados. O e-mail está errado ou não existe.";
     } else {
@@ -45,16 +45,19 @@
         if (password_verify($senha_digitada, $hash_do_banco)) {
             
             
-            $_SESSION['id'] = $resultado['id_empresa'];
-            $_SESSION['nome'] = $resultado['nome_empresa'];
-            $_SESSION['email'] = $resultado['cnpj'];
+            $_SESSION['id_empresa'] = $resultado['id_empresa'];
+            $_SESSION['nome_empresa'] = $resultado['nome_empresa'];
+            $_SESSION['cnpj'] = $resultado['cnpj'];
 
             header('Location: restritaempresa.php');
             exit(); 
         }
     } 
     
-     //$_SESSION['login_error'] = 'E-mail ou senha incorretos.';
-    //header('Location: index.html');
-    //exit();
+     //
+     error_reporting(E_ALL);
+     ini_set('display_errors', 1);
+    header('Location: index.php');
+    //
+    exit();
 ?>

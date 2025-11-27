@@ -3,7 +3,18 @@
 
 <body>
 
-    <?php require 'headeraluno.php' ?>
+    <?php
+        session_start();
+        require 'headeraluno.php';
+        require 'conexao.php';
+
+        // Se não estiver logado, redireciona
+        if (!isset($_SESSION['id'])) {
+            header("Location: login.php");
+            exit;
+        }
+        $id = $_SESSION['id'];
+    ?>
 
     <!-- Perfil Section -->
     <section class="food_section layout_padding-bottom">

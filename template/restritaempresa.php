@@ -3,10 +3,19 @@
 
 <body>
 
-  <?php require 'headerempresa.php' ?>
-  <?php require 'conexao.php'; ?>
-  <!-- food section -->
+<?php
+        session_start();
+        require 'headerempresa.php';
+        require 'conexao.php';
 
+        // Se não estiver logado, redireciona. Usando 'id_empresa' padronizado.
+        if (!isset($_SESSION['id_empresa'])) {
+            header("Location: login.php");
+            exit;
+        }
+        // Variável $id agora guarda o ID da empresa logada.
+        $id_empresa_logada = $_SESSION['id_empresa'];
+?>
   <section class="food_section layout_padding-bottom">
     <br>
     <br>
@@ -20,7 +29,7 @@
           Seus Projetos Cadastrados
         </h2>
       </div>
-      <div  class="btn-box">
+      <div class="btn-box">
         <a style="text-decoration: none;" href="#" class="btn1" data-bs-toggle="modal" data-bs-target="#modalCadastrarProjeto">
           Cadastrar Projeto
         </a>
@@ -28,7 +37,6 @@
       </div>
       <br>
 
-      <!-- card projeto -->
       <div class="container">
         <div class="filters-content">
           <div class="row grid">
@@ -36,21 +44,27 @@
           <?php
             $sql = "
             SELECT 
-            projeto.nome_projeto,
-            projeto.descricao_do_projeto,
-            empresa.nome_empresa
+                id_projeto,
+                nome_projeto,
+                descricao_do_projeto,
+                requisitos_necessarios,
+                data_limite,
+                qt_horas
             FROM projeto
-            LEFT JOIN empresa ON projeto.id_empresa = empresa.id_empresa
+            WHERE id_empresa = :id_empresa
             ";
 
-            $stmt = $pdo->query($sql);
+            $stmt = $pdo->prepare($sql);
+            // Usando a variável padronizada $id_empresa_logada para o bind.
+            $stmt->bindParam(':id_empresa', $id_empresa_logada);
+            $stmt->execute();
 
             if ($stmt->rowCount() == 0) {
-              echo "<p>Nenhum projeto encontrado.</p>";
+                echo "<p>Nenhum projeto encontrado.</p>";
             }
 
             while ($projeto = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
+                $idProjeto = $projeto['id_projeto'];
           ?>
 
             <div class="col-sm-6 col-lg-4 all pizza">
@@ -66,8 +80,7 @@
                     
                     <div class="options">
 
-                      <!-- Botão que abre o modal -->
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto<?= $id ?>">
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#modalProjeto<?= $idProjeto; ?>">
                         <svg version="1.1" id="icon_plus" xmlns="http://www.w3.org/2000/svg"
                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
                           style="enable-background:new 0 0 448 448;" xml:space="preserve">
@@ -83,8 +96,7 @@
               </div>
             </div>
 
-            <!-- modal do projeto -->
-            <div class="modal fade" id="modalProjeto<?= $id ?>" tabindex="-1">
+            <div class="modal fade" id="modalProjeto<?= $idProjeto; ?>" tabindex="-1">
               <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -104,13 +116,14 @@
                   </div>
                   <div class="modal-footer">
                     <div class="btn-box">
-                      <a style="background: red; color: white;" class="btn1" data-bs-dismiss="modal">
+                      <a style="background: red; color: white;" class="btn1" href="deleteprojeto.php?id=<?= $idProjeto; ?>" 
+                         onclick="return confirm('Tem certeza que deseja excluir este projeto?');">
                         Excluir
                       </a>
                     </div>
 
                     <div class="btn-box">
-                      <a style="text-decoration: none;" href="javascript:void(0)" class="btn1" data-bs-toggle="modal" data-bs-target="#modalEditar">
+                      <a style="text-decoration: none;" href="javascript:void(0)" class="btn1" data-bs-toggle="modal" data-bs-target="#modalEditarProjeto<?= $idProjeto; ?>">
                         Editar
                       </a>
                     </div>
@@ -125,10 +138,7 @@
                 </div>
               </div>
             </div>
-            <!-- fim modal do projeto -->
-
-            <!-- Modal de Edição -->
-            <div class="modal fade" id="modalEditar<?= $id ?>" tabindex="-1">
+            <div class="modal fade" id="modalEditarProjeto<?= $idProjeto; ?>" tabindex="-1">
             <div class="modal-dialog modal-lg">
               <div class="modal-content" style="border-radius: 15px;">
                 <div class="modal-header">
@@ -137,66 +147,55 @@
                   </div>
 
                   <div class="modal-body">
-                    <form>
+                    <form action="processaedicaoprojeto.php" method="POST">
+                      <input type="hidden" name="id_projeto" value="<?= $idProjeto; ?>"> 
+                      
                       <div class="form-group mb-3">
                         <label>Título do Projeto</label>
-                        <input type="text" class="form-control" value="<?= $projeto['nome_projeto']; ?>">
+                        <input type="text" class="form-control" name="nome_projeto" value="<?= $projeto['nome_projeto']; ?>">
                       </div>
 
                       <div class="form-group mb-3">
                         <label>Descrição</label>
-                        <textarea class="form-control" rows="3"><?= $projeto['descricao_do_projeto']; ?></textarea>
+                        <textarea class="form-control" name="descricao_do_projeto" rows="3"><?= $projeto['descricao_do_projeto']; ?></textarea>
                       </div>
 
                       <div class="form-group mb-3">
                         <label>Requisitos Necessários</label>
-                        <input type="text" class="form-control" value="<?= $projeto['requisitos_necessarios']; ?>">
+                        <input type="text" class="form-control" name="requisitos_necessarios" value="<?= $projeto['requisitos_necessarios']; ?>">
                       </div>
 
                       <div class="form-group mb-3">
                         <label>Data Limite</label>
-                        <input type="date" class="form-control" value="<?= $projeto['data_limite']; ?>">
+                        <input type="date" class="form-control" name="data_limite" value="<?= $projeto['data_limite']; ?>">
                       </div>
 
                       <div class="form-group mb-3">
                         <label>Carga Horária</label>
-                        <input type="number" class="form-control" value="<?= $projeto['qt_horas']; ?>">
+                        <input type="number" class="form-control" name="qt_horas" value="<?= $projeto['qt_horas']; ?>">
                       </div>
-
+                      
+                      <div class="modal-footer">
+                        <div class="btn-box">
+                          <a style="color: white;" data-bs-dismiss="modal" class="btn1"> Cancelar </a>
+                        </div>
+                        <div class="btn-box">
+                          <button type="submit" class="btn btn-primary btn-block"> Salvar Alterações </button>
+                        </div>
+                      </div>
                     </form>
                   </div>
 
-                  <div class="modal-footer">
-                    <div class="btn-box">
-                      <a style="color: white;" data-bs-dismiss="modal"> Cancelar </a>
-                    </div>
-                    <div class="btn-box">
-                      <a style="color: white;" data-bs-dismiss="modal"> Salvar Alterações </a>
-                    </div>
-                  </div>
-
-                </div>
               </div>
             </div>
-
-
             </div>
-          </div>
-
-          <?php 
+            <?php 
               } // fim do while
           ?>
-
+          </div>
         </div>
       </div>
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <!-- Modal Cadastrar Projeto -->
     <div class="modal fade" id="modalCadastrarProjeto" tabindex="-1" aria-labelledby="modalCadastrarProjetoLabel"
       aria-hidden="true">
       <div class="modal-dialog modal-lg">
@@ -241,9 +240,7 @@
         </div>
       </div>
     </div>
-    <!-- Fim Modal Cadastrar Projeto -->
-
-  </section>
+    </section>
 
   <?php require 'head_footer.php' ?>
 

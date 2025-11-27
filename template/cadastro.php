@@ -6,7 +6,7 @@
   <header class="header_section">
     <div class="container">
       <nav class="navbar navbar-expand-lg custom_nav-container">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
           <span><img class="imglogo" src="images/logo.png" alt="Freetecs"></span>
         </a>
 
@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarMenu">
           <ul class="navbar-nav  mx-auto ">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Início</a>
+              <a class="nav-link" href="index.php">Início</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contato.html">Contato</a>

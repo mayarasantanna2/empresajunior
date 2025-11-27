@@ -3,7 +3,19 @@
 
 <body>
 
-    <?php require 'headerempresa.php' ?>
+    <?php
+        session_start();
+        require 'headerempresa.php';
+        require 'conexao.php';
+
+        // Se não estiver logado, redireciona. Usando 'id_empresa' padronizado.
+        if (!isset($_SESSION['id_empresa'])) {
+            header("Location: login.php");
+            exit;
+        }
+        // Variável $id agora guarda o ID da empresa logada.
+        $id = $_SESSION['id_empresa'];
+    ?>
 
 
     <!-- Perfil Section -->
